@@ -121,7 +121,7 @@ public class TutorialManager : MonoBehaviour
             currentStage = 2;
             SetTutorialHandInteractabilityWithCurrentStage();
         }
-        Debug.Log("Current stage: " + currentStage);
+        Debug.Log("Current stage: " + currentStage);    // TODO: remove after finishing tutorial work
     }
 
     public void SetTutorialHandInteractabilityWithCurrentStage()

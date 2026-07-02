@@ -175,9 +175,14 @@ public class EnemyManager : MonoBehaviour
         return enemies.GetComponentsInChildren<Enemy>().Where(enemy => enemy.CurrentLife > 0).ToList().Count == 0;
     }
 
-    public void SpawnNextWave()
+    public void IncrementWaveNum()
     {
         currentWaveNum++;
+    }
+
+    public void SpawnNextWave()
+    {
+        IncrementWaveNum();
 
         // If there are no more waves to spawn, end the game
         if(currentWaveNum >= enemyWaves.Count)

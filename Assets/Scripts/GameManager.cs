@@ -209,21 +209,31 @@ public class GameManager : MonoBehaviour
     {
         currentStageIndex++;
         // Location Order:
-        // 0) Combat, Wave 0
-        // 1) Combat, Wave 1
-        // 2) Well
-        // 3) Combat, Wave 2
-        // 4) Combat, Wave 3 (Mini Boss)
-        // 5) Well
-        // 6) Combat, Wave 4 (Boss)
+        // 0) Tutorial Combat, Wave 0
+        // 1) Tutorial Combat, Wave 1
+        // 2) Combat, Wave 2
+        // 3) Well
+        // 4) Combat, Wave 3
+        // 5) Combat, Wave 4 (Mini Boss)
+        // 6) Well
+        // 7) Combat, Wave 5 (Boss)
         switch(currentStageIndex)
         {
-            case 2:
-            case 5:
+            case 3:
+            case 6:
                 ChangeGameState(GameState.Well);
                 break;
             default:
-                ChangeGameState(GameState.Combat);
+                // Move right to card selection if the player has played a game before
+                if(currentStageIndex == 0 && !TutorialManager.instance.IsInTutorial)
+                {
+                    EnemyManager.instance.IncrementWaveNum();
+                    ChangeGameState(GameState.CardSelection);
+                }
+                else
+                {
+                    ChangeGameState(GameState.Combat);
+                }
                 break;
         }
 
@@ -235,9 +245,10 @@ public class GameManager : MonoBehaviour
         int area = currentAreaIndex + 1;
         string stageText = currentStageIndex switch
         {
-            2 => "W",
-            5 => "W",
-            _ => (currentStageIndex + 1).ToString(),
+            0 => "1",
+            3 => "W",
+            6 => "W",
+            _ => currentStageIndex.ToString(),
         };
 
         return string.Format("{0}-{1}", area, stageText);
