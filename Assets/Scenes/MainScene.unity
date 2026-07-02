@@ -128,7 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12331347}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: DeckCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 59713413}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: DeckCard (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 92826436}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: DeckCard (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1015,9 +1015,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6027087399653644963, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_Name
       value: playing targeting cards
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1026,6 +1034,10 @@ PrefabInstance:
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311363411328539376, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1216,6 +1228,7 @@ MonoBehaviour:
   mainMenuToStatsButton: {fileID: 2000035707}
   quitButton: {fileID: 554786434}
   statsToMainMenuButton: {fileID: 1936265780}
+  statsClearHistoryButton: {fileID: 1082454760}
   gameInfoButton: {fileID: 1032281576}
   closeGameInfoButton: {fileID: 1593826663}
   viewDeckButton: {fileID: 641044283}
@@ -1537,9 +1550,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5935668429043515556, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_Name
       value: deck
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1548,6 +1569,10 @@ PrefabInstance:
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311363411328539376, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1807,9 +1832,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5935668429043515556, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_Name
       value: attacks
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1818,6 +1851,10 @@ PrefabInstance:
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311363411328539376, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -2264,6 +2301,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: close deck
       objectReference: {fileID: 0}
+    - target: {fileID: 1784098655165582046, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850923155606151859, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3357880577931327255, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2356,6 +2401,10 @@ PrefabInstance:
       propertyPath: previousPanel
       value: 
       objectReference: {fileID: 1215093268}
+    - target: {fileID: 5591582818235872317, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6251897062611941729, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
       propertyPath: m_text
       value: "Let's get back to the game. Click the close button to stop viewing
@@ -2478,9 +2527,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5935668429043515556, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_Name
       value: intro
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.x
@@ -2489,6 +2546,10 @@ PrefabInstance:
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311363411328539376, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -2514,6 +2575,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1707142359}
     m_Modifications:
+    - target: {fileID: 482911165975169174, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 557106871846380541, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 665029401747754459, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2610,6 +2679,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -120
       objectReference: {fileID: 0}
+    - target: {fileID: 4471215583654385791, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4475651882938300047, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_SizeDelta.x
       value: 275
@@ -2617,6 +2690,10 @@ PrefabInstance:
     - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Name
       value: enemy intent
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8169544493516768173, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_text
@@ -3326,6 +3403,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1707142359}
     m_Modifications:
+    - target: {fileID: 482911165975169174, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 557106871846380541, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 665029401747754459, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3422,6 +3507,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -120
       objectReference: {fileID: 0}
+    - target: {fileID: 4471215583654385791, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4475651882938300047, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_SizeDelta.x
       value: 275
@@ -3429,6 +3518,10 @@ PrefabInstance:
     - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Name
       value: allies 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8169544493516768173, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_text
@@ -3832,7 +3925,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 632244293}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: DeckCard (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4423,6 +4516,14 @@ PrefabInstance:
       propertyPath: m_text
       value: "Some cards target a specific unit, like the Shortsword card. \r\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 5644217922228308433, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765075498607142674, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6165657502032287342, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4503,9 +4604,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7108521349964874698, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Name
       value: targeting cards
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4621,6 +4730,10 @@ PrefabInstance:
       propertyPath: m_text
       value: "\rGood job! You have played your first of many cards."
       objectReference: {fileID: 0}
+    - target: {fileID: 5765075498607142674, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6165657502032287342, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4701,9 +4814,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7108521349964874698, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Name
       value: congrats
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -5175,6 +5296,7 @@ RectTransform:
   - {fileID: 2093704035}
   - {fileID: 1008769255}
   - {fileID: 1936265779}
+  - {fileID: 1082454759}
   m_Father: {fileID: 1107327320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5318,9 +5440,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5935668429043515556, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_Name
       value: combat
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.x
@@ -5329,6 +5459,10 @@ PrefabInstance:
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311363411328539376, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -5354,6 +5488,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1707142359}
     m_Modifications:
+    - target: {fileID: 482911165975169174, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 665029401747754459, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5454,6 +5592,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -120
       objectReference: {fileID: 0}
+    - target: {fileID: 4471215583654385791, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4475651882938300047, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_SizeDelta.x
       value: 275
@@ -5461,6 +5603,10 @@ PrefabInstance:
     - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Name
       value: playing cards
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8169544493516768173, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_text
@@ -6001,6 +6147,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: damage
       objectReference: {fileID: 0}
+    - target: {fileID: 1784098655165582046, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824199320043961006, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850923155606151859, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3357880577931327255, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6089,6 +6247,10 @@ PrefabInstance:
       propertyPath: previousPanel
       value: 
       objectReference: {fileID: 473658261}
+    - target: {fileID: 5591582818235872317, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6251897062611941729, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
       propertyPath: m_text
       value: 'Since you only have 1 defense, the enemy will deal 1 damage to you. '
@@ -6388,6 +6550,123 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1130392545}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1082454758
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 886114689}
+    m_Modifications:
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 225
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -775
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -350
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377092358001067670, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_Name
+      value: ClearHistoryButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8804309390695897622, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+      propertyPath: m_text
+      value: Erase
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+--- !u!224 &1082454759 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1404945760096809877, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+  m_PrefabInstance: {fileID: 1082454758}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1082454760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 350747897964253252, guid: 0055bd6e5706f264e95bd140e6a11484, type: 3}
+  m_PrefabInstance: {fileID: 1082454758}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1107327316
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,6 +6937,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: end turn
       objectReference: {fileID: 0}
+    - target: {fileID: 1784098655165582046, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850923155606151859, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3357880577931327255, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6750,6 +7037,10 @@ PrefabInstance:
       propertyPath: previousPanel
       value: 
       objectReference: {fileID: 1378898536}
+    - target: {fileID: 5591582818235872317, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6251897062611941729, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
       propertyPath: m_text
       value: Try playing your remaining cards before hitting the "End Turn" button.
@@ -6773,6 +7064,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1707142359}
     m_Modifications:
+    - target: {fileID: 482911165975169174, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 557106871846380541, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 665029401747754459, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6839,7 +7138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 665029401747754459, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 331
+      value: 361
       objectReference: {fileID: 0}
     - target: {fileID: 665029401747754459, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6861,9 +7160,17 @@ PrefabInstance:
       propertyPath: previousPanel
       value: 
       objectReference: {fileID: 266798617}
+    - target: {fileID: 4471215583654385791, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Name
       value: deck draw
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8169544493516768173, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_text
@@ -7028,7 +7335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1230398839}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: DeckCard (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7294,6 +7601,10 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Take a look at some new cards in your hand. '
       objectReference: {fileID: 0}
+    - target: {fileID: 5765075498607142674, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6165657502032287342, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7374,9 +7685,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7108521349964874698, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Name
       value: other cards
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -8193,6 +8512,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1707142359}
     m_Modifications:
+    - target: {fileID: 482911165975169174, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 557106871846380541, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 665029401747754459, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8289,6 +8616,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -120
       objectReference: {fileID: 0}
+    - target: {fileID: 4471215583654385791, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4475651882938300047, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_SizeDelta.x
       value: 275
@@ -8296,6 +8627,10 @@ PrefabInstance:
     - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_Name
       value: spirits
+      objectReference: {fileID: 0}
+    - target: {fileID: 4567030907721986066, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8169544493516768173, guid: c04ca705233d35f4ea3611e578951cb4, type: 3}
       propertyPath: m_text
@@ -8843,7 +9178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1600583795}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: DeckCard (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9133,9 +9468,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6027087399653644963, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_Name
       value: view deck
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.x
@@ -9144,6 +9487,10 @@ PrefabInstance:
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311363411328539376, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -9444,7 +9791,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1707142359}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: TutorialUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9553,6 +9900,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Playing subsequent allies will buff the current ally's heath.
       objectReference: {fileID: 0}
+    - target: {fileID: 5644217922228308433, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765075498607142674, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6165657502032287342, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9633,9 +9988,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7108521349964874698, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Name
       value: allies 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9753,9 +10116,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5935668429043515556, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027087399653644963, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_Name
       value: defending
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.x
@@ -9764,6 +10139,10 @@ PrefabInstance:
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311363411328539376, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9970,6 +10349,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Drink cards typically will heal sustained damage.
       objectReference: {fileID: 0}
+    - target: {fileID: 5644217922228308433, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5765075498607142674, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6165657502032287342, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -10050,9 +10437,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7108521349964874698, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
       propertyPath: m_Name
       value: drinks
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190878659660049319, guid: 59184021b71c4e74f9205998e339dea8, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10174,9 +10569,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5935668429043515556, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6027087399653644963, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_Name
       value: end
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230975343603495581, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.x
@@ -10185,6 +10592,10 @@ PrefabInstance:
     - target: {fileID: 8306788024190759936, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
       propertyPath: m_SizeDelta.y
       value: 175
+      objectReference: {fileID: 0}
+    - target: {fileID: 8311363411328539376, guid: 1d9895b1b9c82a341a83ebd832ff5244, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11552,6 +11963,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: start of turn
       objectReference: {fileID: 0}
+    - target: {fileID: 1784098655165582046, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824199320043961006, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1850923155606151859, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3357880577931327255, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -11640,6 +12063,10 @@ PrefabInstance:
       propertyPath: previousPanel
       value: 
       objectReference: {fileID: 910250860}
+    - target: {fileID: 5591582818235872317, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6251897062611941729, guid: d8cdd784c01f4e7428f1edacb32ac84b, type: 3}
       propertyPath: m_text
       value: 'At the start of each of your turns, you will randomly draw 4 cards.

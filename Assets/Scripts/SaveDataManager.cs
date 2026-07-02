@@ -41,7 +41,7 @@ public class SaveDataManager : MonoBehaviour
     {
         try
         {
-            return Directory.Exists(dirFullPath);
+            return Directory.Exists(dirFullPath) && File.Exists(saveFileFullPath);
         } 
         catch(Exception e)
         {
@@ -139,5 +139,14 @@ public class SaveDataManager : MonoBehaviour
         }
 
         return saveData;
+    }
+
+    public void ClearSaveData()
+    {
+        if(hasSaveData)
+        {
+            File.Delete(saveFileFullPath);
+            hasSaveData = CheckForSaveData();
+        }
     }
 }

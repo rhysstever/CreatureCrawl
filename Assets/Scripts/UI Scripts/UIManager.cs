@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     private GameObject playerTurnBanner, enemyTurnBanner;
     [SerializeField]    // Buttons
     private Button mainMenuToCharacterSelectButton, mainMenuToStatsButton, quitButton,  // Main Menu Buttons
-        statsToMainMenuButton,                                                          // Stats Buttons
+        statsToMainMenuButton, statsClearHistoryButton,                                 // Stats Buttons
         gameInfoButton, closeGameInfoButton, viewDeckButton, closeViewDeckButton,       // Game Top Buttons
         endTurnButton, selectCardButton, skipButton, drinkWellButton,                   // Game Buttons
         gameEndToMainMenuButton;                                                        // GameEnd Buttons
@@ -51,14 +51,21 @@ public class UIManager : MonoBehaviour
         turnBannerVisibleTime = 1.5f;
         Reset();
 
-        // Set up button listeners
+        // === Set up button listeners ===
+        // Main menu buttons
         mainMenuToCharacterSelectButton.onClick.AddListener(() => {
             mainMenuButtonsParent.SetActive(false);
             Camera.main.GetComponent<CameraPan>().PanCameraDown();
         });
         mainMenuToStatsButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.Stats));
         quitButton.onClick.AddListener(() => Application.Quit());
+        // Stats buttons
         statsToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
+        statsClearHistoryButton.onClick.AddListener(() => {
+            SaveDataManager.instance.ClearSaveData();
+            GameManager.instance.ChangeMenuState(MenuState.MainMenu);
+        });
+        // Game buttons
         gameInfoButton.onClick.AddListener(() => ShowGameInfo());
         closeGameInfoButton.onClick.AddListener(() => HideGameInfo());
         viewDeckButton.onClick.AddListener(() => {
@@ -74,6 +81,7 @@ public class UIManager : MonoBehaviour
             TutorialManager.instance.HideAllTutorialUI();
             GameManager.instance.ChangeCombatState(CombatState.AllyTurn);
         });
+        // Out of combat game buttons
         selectCardButton.onClick.AddListener(() => {
             DeckManager.instance.AddSelectedCardToDeck();
             GameManager.instance.GoToNextStage();
@@ -86,6 +94,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance.Player.HealFull();
             GameManager.instance.GoToNextStage();
         });
+        // Game end buttons
         gameEndToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
     }
 
@@ -158,7 +167,7 @@ public class UIManager : MonoBehaviour
     {
         TogglePlayerTurnBanner(false);
         ToggleEnemyTurnBanner(false);
-        endTurnButton.interactable = false;
+        UpdateEndTurnButtonInteractivability(false);
     }
 
     public void ShowEndTurnButton()
