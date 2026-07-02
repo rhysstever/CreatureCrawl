@@ -30,12 +30,17 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        isInTutorial = !SaveDataManager.instance.HasSaveData;
+        CheckIfTutorialShouldStart();
         hasDeckInfoBeenViewed = false;
         hasBeenBackToCombat = false;
         hasAttacked = false;
 
         SetTutorialHandStage(isInTutorial ? 0 : 2);
+    }
+
+    public void CheckIfTutorialShouldStart()
+    {
+        isInTutorial = !SaveDataManager.instance.HasSaveData;
     }
 
     public void HideAllTutorialUI()
@@ -48,8 +53,9 @@ public class TutorialManager : MonoBehaviour
 
     public void TryStartTutorial()
     {
-        if(IsInTutorial)
+        if(!SaveDataManager.instance.HasSaveData)
         {
+            isInTutorial = true;
             introPanel.SetActive(true);
         }
     }

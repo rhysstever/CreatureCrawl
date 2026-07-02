@@ -147,6 +147,7 @@ public class SaveDataManager : MonoBehaviour
         {
             File.Delete(saveFileFullPath);
             hasSaveData = CheckForSaveData();
+            TutorialManager.instance.CheckIfTutorialShouldStart();
         }
     }
 }
