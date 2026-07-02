@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Player : Unit
 {
     protected override void Start()
@@ -34,11 +36,28 @@ public class Player : Unit
     {
         if(damageType == DamageType.Attack && CharacterManager.instance.Ally != null)
         {
-            // If the ally exists, only damage the player the amount remaining after the ally is attacked
-            int playerDamageAmount = amount - CharacterManager.instance.Ally.GetComponent<Ally>().CurrentLife;
+            int runningAmount = amount;
+            // Damage the player's defense first
+            if(currentDefense > 0)
+            {
+                int damageToDefense = Mathf.Min(runningAmount, currentDefense);
+                runningAmount -= damageToDefense;
+                base.TakeDamage(damageToDefense, attacker, damageType);
+            }
 
-            CharacterManager.instance.Ally.GetComponent<Ally>().TakeDamage(amount);
-            base.TakeDamage(playerDamageAmount, attacker, damageType);
+            // Then damage ally
+            if(runningAmount > 0)
+            {
+                int damageToAlly = Mathf.Min(runningAmount, CharacterManager.instance.Ally.GetComponent<Ally>().CurrentLife);
+                runningAmount -= damageToAlly;
+                CharacterManager.instance.Ally.GetComponent<Ally>().TakeDamage(damageToAlly);
+            }
+
+            // Damage the player (will be actual health) for the remaining amount
+            if(runningAmount > 0)
+            {
+                base.TakeDamage(runningAmount, attacker, damageType);
+            }
         }
         else
         {

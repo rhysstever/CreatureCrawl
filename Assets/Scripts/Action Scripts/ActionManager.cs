@@ -103,15 +103,8 @@ public class ActionManager : MonoBehaviour
             case TargetType.RandomFoe:
                 if(actor is Enemy)
                 {
-                    // If an ally exists, randomly choose between the ally and the player
-                    if(CharacterManager.instance.Ally != null || UnityEngine.Random.Range(0, 2) == 1)
-                    {
-                        return CharacterManager.instance.Ally;
-                    }
-                    else
-                    {
-                        return GameManager.instance.Player;
-                    }
+                    Debug.Log("Warning! Enemy is set to attack a random enemy.");
+                    return GameManager.instance.Player;
                 }
                 else
                 {
@@ -124,7 +117,7 @@ public class ActionManager : MonoBehaviour
                 if((actor is Player && target is Player)
                     || (actor is Enemy && target is Enemy))
                 {
-                    Debug.Log("Warning! Both the actor and player are the same type!");
+                    Debug.Log("Warning! Both the actor and target are the same type!");
                 }
                 break;
         }
