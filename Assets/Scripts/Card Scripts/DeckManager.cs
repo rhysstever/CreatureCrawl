@@ -189,6 +189,8 @@ public class DeckManager : MonoBehaviour
                 handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = true;
             }
         }
+
+        UIManager.instance.UpdateEndTurnButtonInteractivability(stage > 1);
     }
 
     public void DrawCards(int numberOfCardsToDraw)

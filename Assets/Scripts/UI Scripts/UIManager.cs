@@ -268,16 +268,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void UpdateEndTurnButtonInteractivability(bool interactable)
+    {
+        if(endTurnButton.gameObject.activeSelf)
+        {
+            endTurnButton.interactable = interactable;
+        }
+    }
+
     /// <summary>
     /// Update active buttons' interactability
     /// </summary>
     /// <param name="interactable">Whether buttons should be interactable</param>
     private void UpdateButtonInteractability(bool interactable)
     {
-        if(endTurnButton.gameObject.activeSelf)
-        {
-            endTurnButton.interactable = interactable;
-        }
+        UpdateEndTurnButtonInteractivability(interactable);
 
         if(selectCardButton.gameObject.activeSelf)
         {
