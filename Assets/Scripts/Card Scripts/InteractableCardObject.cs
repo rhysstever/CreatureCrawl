@@ -12,6 +12,7 @@ public class InteractableCardObject : CardObject
     private Vector2 savedPos, dragOffset;
     private Collider2D cardFieldCollider;
     private bool isInField;
+    private float savedRot;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -101,6 +102,9 @@ public class InteractableCardObject : CardObject
             dragOffset = savedPos - TargettingManager.instance.GetMousePosition() 
                 + new Vector2(hoverOffset.localPosition.x, hoverOffset.localPosition.y);
             isBeingDragged = true;
+
+            savedRot = transform.eulerAngles.z;
+            transform.eulerAngles = Vector3.zero;
         }
     }
 
@@ -150,6 +154,7 @@ public class InteractableCardObject : CardObject
         // If the card is not in the playing field OR targets but didnt have one,
         // move the card back to its original position
         transform.position = savedPos;
+        transform.eulerAngles = new Vector3(0f, 0f, savedRot);
     }
 
     private void PlayCard(GameObject target)
