@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
                 }
                 currentAreaIndex = -1;
                 currentStageIndex = -1;
+                CardManager.instance.Reset();
                 EnemyManager.instance.Reset();
                 ChangeGameState(GameState.None);
                 ChangeCombatState(CombatState.None);
