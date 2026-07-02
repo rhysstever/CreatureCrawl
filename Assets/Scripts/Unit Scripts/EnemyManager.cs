@@ -211,8 +211,16 @@ public class EnemyManager : MonoBehaviour
                 }
                 else
                 {
-                    // Spawn the only enemy in the center spot
-                    SpawnEnemy(enemyToSpawn, 2);
+                    if(TutorialManager.instance.IsInTutorial)
+                    {
+                        // Spawn the tutorial enemy in the middle right spot
+                        SpawnEnemy(enemyToSpawn, 3).IncrementRound();
+                    }
+                    else
+                    {
+                        // Spawn the only enemy in the center spot
+                        SpawnEnemy(enemyToSpawn, 2);
+                    }
                 }
                 break;
             default:
