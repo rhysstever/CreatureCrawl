@@ -124,7 +124,6 @@ public class CharacterManager : MonoBehaviour
     public void ChooseCharacter(Character character)
     {
         chosenCharacter = character;
-        ResetSummons();
         HideCharacterSelectIcons();
         ClearCharacterSelectInfo();
         GameManager.instance.StartGame();
@@ -187,7 +186,7 @@ public class CharacterManager : MonoBehaviour
                 allyPrefabs[summonAction.SummonName.Replace(" ", "")],
                 allySpawnTrans.position,
                 Quaternion.identity,
-                transform
+                allySpawnTrans
             ).GetComponent<Ally>();
 
             newAlly.SetHealth(amount);
@@ -202,7 +201,7 @@ public class CharacterManager : MonoBehaviour
             spiritPrefabs[spiritTypeToSummon.Replace(" ", "")],
             spiritSpawnTrans.position,
             Quaternion.identity,
-            transform
+            spiritSpawnTrans
         );
         summonedSpirits.Add(newSpirit);
     }

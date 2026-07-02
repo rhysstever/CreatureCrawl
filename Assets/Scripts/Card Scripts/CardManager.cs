@@ -185,7 +185,7 @@ public class CardManager : MonoBehaviour
                 new Action(ActionType.Heal, 1, TargetType.Player)
             }),
             new CardData("Lightning Strike", Slot.Spell, Rarity.Uncommon, new List<Action> { new Action(ActionType.SpellAttack, 4, TargetType.RandomFoe) }),
-            new CardData("Heal", Slot.Spell, Rarity.Uncommon, new List<Action> { new Action(ActionType.Heal, 5, TargetType.Ally) }),
+            new CardData("Heal", Slot.Spell, Rarity.Uncommon, new List<Action> { new Action(ActionType.Heal, 5, TargetType.Self) }),
             new CardData("Curse", Slot.Spell, Rarity.Uncommon, new List<Action> { new Action(ActionType.Poison, 5, TargetType.Foe) }),
             //new CardData("Arcane Armor", Slot.Spell, Rarity.Uncommon, new List<Action> { new Action(...) }),
             //new CardData("Reflect", Slot.Spell, Rarity.Uncommon, new List<Action> { new Action(...) }),

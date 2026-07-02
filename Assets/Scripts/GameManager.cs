@@ -189,6 +189,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        CharacterManager.instance.ResetSummons();
         ChangeMenuState(MenuState.Game);
 
         // Create Player

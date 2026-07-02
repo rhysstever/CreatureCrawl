@@ -57,18 +57,17 @@ public class Unit : MonoBehaviour
     public virtual void Reset()
     {
         currentLife = maxLife;
-        PostCombatReset();
+        currentDefense = 0;
+        unitEffects.ResetAllEffects();
+        UpdateDefenseUIText();
         UpdateLifeUIText();
     }
 
     public void PostCombatReset()
     {
-        currentDefense = 0;
-        unitEffects.ResetAllEffects();
-
-        CharacterManager.instance.ResetSummons();
+        Reset();
         RemoveEffectsUI();
-        UpdateDefenseUIText();
+        CharacterManager.instance.ResetSummons();
     }
 
     public virtual void DealDamage(int baseAttack, Unit target, DamageType damageType)
@@ -167,8 +166,12 @@ public class Unit : MonoBehaviour
         else
         {
             currentLife -= amount;
-            unitProcessDamageCoroutine = ProcessDamage();
-            StartCoroutine(unitProcessDamageCoroutine);
+            // Skip showing damage taken if the damage is poison
+            if(damageType != DamageType.Poison)
+            {
+                unitProcessDamageCoroutine = ProcessDamage();
+                StartCoroutine(unitProcessDamageCoroutine);
+            }
         }
 
         // Check for Spike Reflection: 
@@ -190,7 +193,7 @@ public class Unit : MonoBehaviour
 
     private IEnumerator ProcessDamage()
     {
-        WaitForSeconds delayWait = new WaitForSeconds(0.5f);
+        WaitForSeconds delayWait = new WaitForSeconds(0.33f);
 
         unitSpriteRenderer.color = ParticlesManager.instance.TakeDamageColor;
         AudioManager.instance.PlayDamageTakenAudio();
@@ -358,6 +361,13 @@ public class Unit : MonoBehaviour
             UpdateEffectsUI();
         }
 
+        // If the unit is an enemy and dies from burn, stop processing
+        Enemy enemyComp = gameObject.GetComponent<Enemy>();
+        if(enemyComp != null && currentLife <= 0)
+        {
+            yield break;
+        }
+
         if(unitEffects.GetEffectAmount(ActionType.Poison) > 0)
         {
             yield return effectTriggerToDamageDelayWait;
@@ -383,7 +393,6 @@ public class Unit : MonoBehaviour
         }
 
         // If this Unit is an enemy, mark it processed
-        Enemy enemyComp = gameObject.GetComponent<Enemy>();
         if(enemyComp != null)
         {
             enemyComp.MarkProcessed();
