@@ -34,7 +34,8 @@ public class TutorialManager : MonoBehaviour
         hasDeckInfoBeenViewed = false;
         hasBeenBackToCombat = false;
         hasAttacked = false;
-        currentStage = 0;
+
+        SetTutorialHandStage(isInTutorial ? 0 : 2);
     }
 
     public void HideAllTutorialUI()
@@ -97,12 +98,14 @@ public class TutorialManager : MonoBehaviour
         if(IsInTutorial)
         {
             startOfSecondTurnPanel.SetActive(true);
-            SetTutorialHandStage(2);
+            SetTutorialHandStage(0);
         }
     }
 
     public void EndTutorial()
     {
+        HideAllTutorialUI();
+        SetTutorialHandStage(2);
         isInTutorial = false;
     }
 
@@ -113,6 +116,12 @@ public class TutorialManager : MonoBehaviour
             currentStage = stage;
             SetTutorialHandInteractabilityWithCurrentStage();
         }
+        else
+        {
+            currentStage = 2;
+            SetTutorialHandInteractabilityWithCurrentStage();
+        }
+        Debug.Log("Current stage: " + currentStage);
     }
 
     public void SetTutorialHandInteractabilityWithCurrentStage()
@@ -120,6 +129,10 @@ public class TutorialManager : MonoBehaviour
         if(IsInTutorial)
         {
             DeckManager.instance.SetTutorialHandInteractability(currentStage);
+        }
+        else
+        {
+            DeckManager.instance.SetTutorialHandInteractability(2);
         }
     }
 }

@@ -284,7 +284,7 @@ public class UIManager : MonoBehaviour
     {
         UpdateEndTurnButtonInteractivability(interactable);
 
-        if(selectCardButton.gameObject.activeSelf)
+        if(selectCardButton.gameObject.activeSelf && DeckManager.instance.CurrentCardSelection != null)
         {
             selectCardButton.interactable = interactable;
         }
