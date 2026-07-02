@@ -150,10 +150,12 @@ public class ActionManager : MonoBehaviour
                 target.Heal(amount);
                 break;
             case ActionType.Burn:
-                target.GiveBurn(amount);
+                int amountOfBurn = amount + actor.UnitEffects.GetEffectAmount(ActionType.Burn, true);
+                target.GiveBurn(amountOfBurn);
                 break;
             case ActionType.Poison:
-                target.GivePoison(amount);
+                int amountOfPoison = amount + actor.UnitEffects.GetEffectAmount(ActionType.Poison, true);
+                target.GivePoison(amountOfPoison);
                 break;
             case ActionType.Spike:
                 target.GiveSpike(amount);

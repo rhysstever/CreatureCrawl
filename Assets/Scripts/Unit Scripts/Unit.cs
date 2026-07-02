@@ -243,9 +243,8 @@ public class Unit : MonoBehaviour
         UpdateDefenseUIText();
     }
 
-    public void GiveBurn(int baseBurn)
+    public void GiveBurn(int amount)
     {
-        int amount = baseBurn + unitEffects.GetEffectAmount(ActionType.Burn, true);
         if(amount < 0)
         {
             return;
@@ -257,9 +256,8 @@ public class Unit : MonoBehaviour
         UpdateEffectsUI();
     }
 
-    public void GivePoison(int basePoison)
+    public void GivePoison(int amount)
     {
-        int amount = basePoison + unitEffects.GetEffectAmount(ActionType.Poison, true);
         if(amount < 0)
         {
             return;
