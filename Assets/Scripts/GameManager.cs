@@ -107,7 +107,6 @@ public class GameManager : MonoBehaviour
             case MenuState.GameEnd:
                 ChangeGameState(GameState.None);
                 ChangeCombatState(CombatState.None);
-                SaveDataManager.instance.SaveGame();
                 break;
         }
 

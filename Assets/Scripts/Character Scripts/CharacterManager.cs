@@ -126,10 +126,12 @@ public class CharacterManager : MonoBehaviour
     private List<Character> GetCharactersWonWith()
     {
         List<SaveDataObject> runHistoryList = SaveDataManager.instance.LoadRunInfo();
-        return runHistoryList.Select(run => {
-            Character.TryParse(run.character, out Character runCharacter);
-            return runCharacter;
-        }).ToList();
+        return runHistoryList
+            .Where(run => run.progress == "WIN")
+            .Select(run => {
+                Character.TryParse(run.character, out Character runCharacter);
+                return runCharacter;
+            }).ToList();
     }
 
     public void HideCharacterSelectIcons()

@@ -328,12 +328,15 @@ public class UIManager : MonoBehaviour
         if(victory)
         {
             gameEndHeaderText.text = "VICTORY";
+            SaveDataManager.instance.SaveGame("WIN");
         }
         else
         {
+            string stageFailedOn = GameManager.instance.GetCurrentStageText();
             gameEndHeaderText.text = string.Format(
                 "SLAIN ON {0}",
-                GameManager.instance.GetCurrentStageText());
+                stageFailedOn);
+            SaveDataManager.instance.SaveGame(stageFailedOn);
         }
 
         // Check for the current spirit card, which has no starter

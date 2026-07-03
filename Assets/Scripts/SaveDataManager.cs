@@ -40,18 +40,18 @@ public class SaveDataManager : MonoBehaviour
         } 
         catch(Exception e)
         {
-            Debug.LogError(string.Format("Error! Failed to find directory: {0}\n {1}", dirFullPath, e));
+            Debug.Log(string.Format("No save data found! Failed to find directory: {0}\n {1}", dirFullPath, e));
             return false;
         }
     }
 
-    public void SaveGame()
+    public void SaveGame(string progress)
     {
         // JSON structure
         // list of runs
         // [
         //  {
-        //      "date": {YYYY-MM-DD},
+        //      "date": {YYYY/MM/DD HH:MM},
         //      "progress": #-# or WIN (if won run)
         //      "character": {NAME OF CHARACTER},
         //      "mainHand": {NAME OF ATTACK CARD},
@@ -68,7 +68,7 @@ public class SaveDataManager : MonoBehaviour
         DateTime today = DateTime.Now;
         saveData.date = string.Format("{0}/{1}/{2} {3}:{4}", today.Year, today.Month, today.Day, today.Hour, today.Minute);
         // Current progress
-        saveData.progress = GameManager.instance.GetCurrentStageText();
+        saveData.progress = progress;
         // Deck info
         saveData.character = CharacterManager.instance.ChosenCharacter.ToString();
         saveData.mainHand = DeckManager.instance.GetCardDataBySlot(Slot.MainHand).Name;
@@ -112,6 +112,12 @@ public class SaveDataManager : MonoBehaviour
 
     public List<SaveDataObject> LoadRunInfo()
     {
+        // Return an empty list if there is no save directory or file
+        if(!CheckForSaveData())
+        {
+            return new List<SaveDataObject>();
+        }
+
         List<SaveDataObject> saveData = new List<SaveDataObject>();
         try
         {
@@ -130,7 +136,7 @@ public class SaveDataManager : MonoBehaviour
         } 
         catch(Exception e)
         {
-            Debug.LogWarning(string.Format("Error! Failed to load data from file: {0}\n {1}", saveFileFullPath, e));
+            Debug.LogWarning(string.Format("Warning! Failed to load data from file: {0}\n {1}", saveFileFullPath, e));
             return new List<SaveDataObject>();
         }
 
