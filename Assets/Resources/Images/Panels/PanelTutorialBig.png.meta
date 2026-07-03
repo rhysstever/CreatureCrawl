@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c1c499d6a14eb214cb9788a9d959ab50
+guid: 6ef82cdfb54b1fd4ba80a5284d45c7e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4891929922972677257
-    second: PanelMassive_0
+      213: -5694373382589853901
+    second: PanelTutorialBig_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PanelMassive_0
+      name: PanelTutorialBig_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
-        height: 96
+        width: 48
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 984f3eca850a3e340800000000000000
-      internalID: 4891929922972677257
+      spriteID: 33fca40249589f0b0800000000000000
+      internalID: -5694373382589853901
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PanelMassive_0: 4891929922972677257
+      PanelTutorialBig_0: -5694373382589853901
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
