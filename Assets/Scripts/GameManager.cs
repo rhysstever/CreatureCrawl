@@ -94,6 +94,8 @@ public class GameManager : MonoBehaviour
                 ChangeGameState(GameState.None);
                 ChangeCombatState(CombatState.None);
                 Camera.main.GetComponent<CameraPan>().ResetCameraPosition();
+                // Start playing overworld music
+                AudioManager.instance.PlayOverworldMusic();
                 break;
             case MenuState.Stats:
                 break;
@@ -105,6 +107,8 @@ public class GameManager : MonoBehaviour
             case MenuState.Game:
                 break;
             case MenuState.GameEnd:
+                // Start playing overworld music
+                AudioManager.instance.PlayOverworldMusic();
                 ChangeGameState(GameState.None);
                 ChangeCombatState(CombatState.None);
                 break;
@@ -120,9 +124,13 @@ public class GameManager : MonoBehaviour
         switch(newGameState)
         {
             case GameState.Combat:
+                // Start playing combat music
+                AudioManager.instance.PlayCombatMusic();
                 ChangeCombatState(CombatState.Start);
                 break;
             case GameState.CardSelection:
+                // Start playing overworld music
+                AudioManager.instance.PlayOverworldMusic();
                 ChangeCombatState(CombatState.None);
                 DeckManager.instance.SetupCardSelection();
                 break;

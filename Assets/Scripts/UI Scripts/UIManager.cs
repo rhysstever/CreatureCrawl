@@ -327,14 +327,14 @@ public class UIManager : MonoBehaviour
         bool victory = GameManager.instance.Player.CurrentLife > 0;
         if(victory)
         {
-            gameEndHeaderText.text = "VICTORY";
+            gameEndHeaderText.text = "VICTORY!";
             SaveDataManager.instance.SaveGame("WIN");
         }
         else
         {
             string stageFailedOn = GameManager.instance.GetCurrentStageText();
             gameEndHeaderText.text = string.Format(
-                "SLAIN ON {0}",
+                "DEFEAT!\nSlain on {0}",
                 stageFailedOn);
             SaveDataManager.instance.SaveGame(stageFailedOn);
         }

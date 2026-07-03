@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 
     // Set in inspector
     [SerializeField]
+    private AudioSource overworldMusic, combatMusic;
+    [SerializeField]
     private List<GameObject> damageTakenAudioPrefabs;
     [SerializeField]
     private List<GameObject> damageBlockedAudioPrefabs;
@@ -73,6 +75,25 @@ public class AudioManager : MonoBehaviour
         onPoisonAudioDelegate += PlayPoisonAudio;
     }
 
+    #region Music
+    public void PlayOverworldMusic()
+    {
+        //overworldMusic.SetActive(true);
+        //combatMusic.SetActive(false);
+        overworldMusic.volume = 1f;
+        combatMusic.volume = 0f;
+    }
+
+    public void PlayCombatMusic()
+    {
+        //combatMusic.SetActive(true);
+        //overworldMusic.SetActive(false);
+        overworldMusic.volume = 0f;
+        combatMusic.volume = 1f;
+    }
+    #endregion Music
+
+    #region SFX
     public void PlaySlotAttackAudio(ActionType actionType)
     {
         switch(actionType)
@@ -217,4 +238,5 @@ public class AudioManager : MonoBehaviour
     {
         Instantiate(audioPrefab, transform);
     }
+    #endregion SFX
 }

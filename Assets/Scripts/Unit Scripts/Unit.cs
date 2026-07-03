@@ -346,6 +346,7 @@ public class Unit : MonoBehaviour
         WaitForSeconds effectTriggerToDamageDelayWait = new WaitForSeconds(0.5f);
         WaitForSeconds turnBannerDelayWait = new WaitForSeconds(UIManager.instance.TurnBannerVisibleTime);
 
+        // Process any burn on the unit
         if(unitEffects.GetEffectAmount(ActionType.Burn) > 0)
         {
             yield return effectTriggerToDamageDelayWait;
@@ -359,13 +360,19 @@ public class Unit : MonoBehaviour
             UpdateEffectsUI();
         }
 
-        // If the unit is an enemy and dies from burn, stop processing
+        // If the unit is an enemy and dies from burn, mark is processed
         Enemy enemyComp = gameObject.GetComponent<Enemy>();
         if(enemyComp != null && currentLife <= 0)
+        {
+            enemyComp.MarkProcessed();
+        }
+        // Stop processing for any unit if it is dead
+        if(currentLife <= 0)
         {
             yield break;
         }
 
+        // Process any poison on the unit
         if(unitEffects.GetEffectAmount(ActionType.Poison) > 0)
         {
             yield return effectTriggerToDamageDelayWait;
