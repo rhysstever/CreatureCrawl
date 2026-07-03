@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7058213460485476593}
   - component: {fileID: 2391518981082728465}
   m_Layer: 5
-  m_Name: PoisonHoverPanel
+  m_Name: SpikesHoverPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Poison - Deals damage at turn end. Reduced by healing. Unblockable.
+  m_text: 'Spikes - Deals damage when attacked equal to the number of spikes. Blockable. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 697d8eceb4371c6498a079cc2dc14eb1, type: 2}
   m_sharedMaterial: {fileID: -6841830904822697613, guid: 697d8eceb4371c6498a079cc2dc14eb1, type: 2}
