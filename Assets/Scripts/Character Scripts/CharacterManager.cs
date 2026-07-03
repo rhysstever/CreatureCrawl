@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
 public enum Character
 {
+    Locked,
     Badger,
     Beaver,
     Fox,
@@ -27,7 +29,9 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private Transform allySpawnTrans, spiritSpawnTrans;
     [SerializeField]    // Character Sprites
-    private Sprite badgerSprite, beaverSprite, foxSprite, opossumSprite, otterSprite, skunkSprite;
+    private Sprite lockedSprite, badgerSprite, beaverSprite, foxSprite, opossumSprite, otterSprite, skunkSprite;
+    [SerializeField]    // Character Head Sprites
+    private Sprite lockedHeadSprite, badgerHeadSprite, beaverHeadSprite, foxHeadSprite, opossumHeadSprite, otterHeadSprite, skunkHeadSprite;
 
     // Set at Start
     private Dictionary<string, GameObject> allyPrefabs;
@@ -35,6 +39,7 @@ public class CharacterManager : MonoBehaviour
     private Character chosenCharacter;
     private Ally ally;
     private List<GameObject> summonedSpirits;
+    private List<Character> charactersWonWith;
 
     public Character ChosenCharacter { get { return chosenCharacter; } }
     public Ally Ally { get { return ally; } }
@@ -56,6 +61,7 @@ public class CharacterManager : MonoBehaviour
 
     void Start()
     {
+        charactersWonWith = new List<Character>();
         summonedSpirits = new List<GameObject>();
         HideCharacterSelectIcons();
     }
@@ -114,6 +120,16 @@ public class CharacterManager : MonoBehaviour
     public void ShowCharacterSelectIcons()
     {
         characterSelectIconParent.gameObject.SetActive(true);
+        charactersWonWith = GetCharactersWonWith();
+    }
+
+    private List<Character> GetCharactersWonWith()
+    {
+        List<SaveDataObject> runHistoryList = SaveDataManager.instance.LoadRunInfo();
+        return runHistoryList.Select(run => {
+            Character.TryParse(run.character, out Character runCharacter);
+            return runCharacter;
+        }).ToList();
     }
 
     public void HideCharacterSelectIcons()
@@ -153,7 +169,21 @@ public class CharacterManager : MonoBehaviour
             Character.Opossum => opossumSprite,
             Character.Otter => otterSprite,
             Character.Skunk => skunkSprite,
-            _ => null,
+            _ => lockedSprite,
+        };
+    }
+
+    public Sprite GetCharacterHeadSprite(Character character)
+    {
+        return character switch
+        {
+            Character.Badger => badgerHeadSprite,
+            Character.Beaver => beaverHeadSprite,
+            Character.Fox => foxHeadSprite,
+            Character.Opossum => opossumHeadSprite,
+            Character.Otter => otterHeadSprite,
+            Character.Skunk => skunkHeadSprite,
+            _ => lockedHeadSprite,
         };
     }
 
@@ -161,14 +191,38 @@ public class CharacterManager : MonoBehaviour
     {
         return character switch
         {
-            Character.Badger => "Physical attacks deal more damage",
-            Character.Beaver => "Starts with higher max health",
-            Character.Fox => "Spells deal more damage",
-            Character.Opossum => "Summons are tougher",
-            Character.Otter => "Cards draw with an equal chance",
-            Character.Skunk => "Damaging effects linger on enemies longer",
-            _ => string.Format("Error! No deck description for {0} character", character),
+            Character.Badger => "Physical attacks deal more damage.",
+            Character.Beaver => "Starts with higher max health.",
+            Character.Fox => "Spells deal more damage.",
+            Character.Opossum => "Summons are tougher.",
+            Character.Otter => "Cards draw with an equal chance.",
+            Character.Skunk => "Damaging effects linger on enemies longer.",
+            _ => "Claim victory with the previous character to unlock."
         };
+    }
+
+    public bool IsCharacterUnlocked(Character character)
+    {
+        return character switch
+        {
+            Character.Beaver => true,
+            Character.Badger => HasWonWithCharacter(Character.Beaver),
+            Character.Fox => HasWonWithCharacter(Character.Badger),
+            Character.Skunk => HasWonWithCharacter(Character.Fox),
+            Character.Opossum => HasWonWithCharacter(Character.Skunk),
+            Character.Otter => HasWonWithCharacter(Character.Opossum),
+            _ => false,
+        };
+    }
+
+    private bool HasWonWithCharacter(Character character)
+    {
+        if(!SaveDataManager.instance.HasSaveData || character == Character.Locked)
+        {
+            return false;
+        }
+
+        return charactersWonWith.Contains(character);
     }
 
     public void SummonAlly(Summon summonAction)

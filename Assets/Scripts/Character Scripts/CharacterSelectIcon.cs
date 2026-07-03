@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CharacterSelectIcon : MonoBehaviour
 {
@@ -11,21 +10,30 @@ public class CharacterSelectIcon : MonoBehaviour
     [SerializeField]
     private Character character;
 
+    private bool isUnlocked;
+
     void Start()
     {
         characterIconSelectedObj.SetActive(false);
+
+        // Determine head sprite used
+        isUnlocked = CharacterManager.instance.IsCharacterUnlocked(character);
+        characterSpriteRenderer.sprite = CharacterManager.instance.GetCharacterHeadSprite(isUnlocked ? character : Character.Locked);
     }
 
     private void OnMouseUpAsButton()
     {
-        characterIconSelectedObj.SetActive(false);
-        CharacterManager.instance.ChooseCharacter(character);
+        if(isUnlocked)
+        {
+            characterIconSelectedObj.SetActive(false);
+            CharacterManager.instance.ChooseCharacter(character);
+        }
     }
 
     private void OnMouseEnter()
     {
         characterIconSelectedObj.SetActive(true);
-        CharacterManager.instance.SetCharacterSelectInfo(character);
+        CharacterManager.instance.SetCharacterSelectInfo(isUnlocked ? character : Character.Locked);
     }
 
     private void OnMouseExit()

@@ -32,11 +32,6 @@ public class SaveDataManager : MonoBehaviour
         hasSaveData = CheckForSaveData();
     }
 
-    private void Start()
-    {
-
-    }
-
     private bool CheckForSaveData()
     {
         try
@@ -135,7 +130,8 @@ public class SaveDataManager : MonoBehaviour
         } 
         catch(Exception e)
         {
-            Debug.LogError(string.Format("Error! Failed to load data from file: {0}\n {1}", saveFileFullPath, e));
+            Debug.LogWarning(string.Format("Error! Failed to load data from file: {0}\n {1}", saveFileFullPath, e));
+            return new List<SaveDataObject>();
         }
 
         return saveData;

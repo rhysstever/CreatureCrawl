@@ -212,17 +212,15 @@ public class UIManager : MonoBehaviour
     public void UpdateCharacterSelectInfo()
     {
         characterSelectInfoText.text = "Choose Your Warrior";
-        characterSelectInfoText.verticalAlignment = VerticalAlignmentOptions.Middle;
     }
 
     public void UpdateCharacterSelectInfo(Character character)
     {
         characterSelectInfoText.text = string.Format(
             "{0}\n\n{1}",
-            character.ToString(),
-            CharacterManager.instance.GetCharacterDeckDescription(character));
-            
-        characterSelectInfoText.verticalAlignment = VerticalAlignmentOptions.Top;
+            character == Character.Locked ? "???" : character.ToString(),
+            CharacterManager.instance.GetCharacterDeckDescription(character)
+        );
     }
 
     public void UpdateStageText()
