@@ -70,18 +70,8 @@ public class Unit : MonoBehaviour
         CharacterManager.instance.ResetSummons();
     }
 
-    public virtual void DealDamage(int baseAttack, Unit target, DamageType damageType)
+    public virtual void DealDamage(int amount, Unit target, DamageType damageType)
     {
-        int amount = baseAttack;
-        if(damageType == DamageType.Attack)
-        {
-            amount += unitEffects.GetEffectAmount(ActionType.WeaponAttack, true);
-        }
-        else if(damageType == DamageType.Spell)
-        {
-            amount += unitEffects.GetEffectAmount(ActionType.SpellAttack, true);
-        }
-
         if(amount < 0)
         {
             return;
@@ -201,22 +191,20 @@ public class Unit : MonoBehaviour
         unitSpriteRenderer.color = ParticlesManager.instance.ResetColor;
     }
 
-    public void GiveDefense(int baseDefense)
+    public void GiveDefense(int amount)
     {
-        int amount = baseDefense + unitEffects.GetEffectAmount(ActionType.Defend, true);
         if(amount < 0)
         {
             return;
         }
 
         AudioManager.instance.PlayGiveDefenseAudio();
-        currentDefense += amount + unitEffects.GetEffectAmount(ActionType.Defend, true);
+        currentDefense += amount;
         UpdateDefenseUIText();
     }
 
-    public virtual void Heal(int baseHeal)
+    public virtual void Heal(int amount)
     {
-        int amount = baseHeal + unitEffects.GetEffectAmount(ActionType.Heal, true);
         if(amount < 0)
         {
             return;
@@ -224,7 +212,7 @@ public class Unit : MonoBehaviour
 
         AudioManager.instance.PlayHealAudio();
         healingParticleSystem.EnableParticles();
-        currentLife += amount + unitEffects.GetEffectAmount(ActionType.Heal, true);
+        currentLife += amount;
         if(currentLife > maxLife)
         {
             currentLife = maxLife;

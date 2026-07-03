@@ -131,16 +131,20 @@ public class ActionManager : MonoBehaviour
         switch(action.ActionType)
         {
             case ActionType.WeaponAttack:
-                actor.DealDamage(amount, target, DamageType.Attack);
+                int amountToWeaponAttack = amount + actor.UnitEffects.GetEffectAmount(ActionType.WeaponAttack, true);
+                actor.DealDamage(amountToWeaponAttack, target, DamageType.Attack);
                 break;
             case ActionType.SpellAttack:
-                actor.DealDamage(amount, target, DamageType.Spell);
+                int amountToSpellAttack = amount + actor.UnitEffects.GetEffectAmount(ActionType.SpellAttack, true);
+                actor.DealDamage(amountToSpellAttack, target, DamageType.Spell);
                 break;
             case ActionType.Defend:
-                target.GiveDefense(amount);
+                int amountToDefend = amount + actor.UnitEffects.GetEffectAmount(ActionType.Defend, true);
+                target.GiveDefense(amountToDefend);
                 break;
             case ActionType.Heal:
-                target.Heal(amount);
+                int amountToHeal = amount + actor.UnitEffects.GetEffectAmount(ActionType.Heal, true);
+                target.Heal(amountToHeal);
                 break;
             case ActionType.Burn:
                 int amountOfBurn = amount + actor.UnitEffects.GetEffectAmount(ActionType.Burn, true);
