@@ -225,10 +225,12 @@ public class GameManager : MonoBehaviour
         // 5) Combat, Wave 4 (Mini Boss)
         // 6) Well
         // 7) Combat, Wave 5 (Boss)
+        // 8) Well
         switch(currentStageIndex)
         {
             case 3:
             case 6:
+            case 8:
                 ChangeGameState(GameState.Well);
                 break;
             default:
@@ -251,13 +253,16 @@ public class GameManager : MonoBehaviour
     public string GetCurrentStageText()
     {
         int area = currentAreaIndex + 1;
-        string stageText = currentStageIndex switch
+
+        string stageText = currentStageIndex.ToString();
+        if(currentStageIndex == 0)
         {
-            0 => "T",
-            3 => "W",
-            6 => "W",
-            _ => currentStageIndex.ToString(),
-        };
+            stageText = "T";
+        }
+        else if(currentStageIndex == 3 || currentStageIndex == 6 || currentStageIndex == 8)
+        {
+            stageText = "W";
+        }
 
         return string.Format("{0}-{1}", area, stageText);
     }

@@ -1539,13 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b03e33696f0d104ca5bb37b1153d719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies: {fileID: 1117741743}
-  enemySpawnPositions:
-  - {fileID: 1651469201}
-  - {fileID: 871300010}
-  - {fileID: 1322608090}
-  - {fileID: 480866814}
-  - {fileID: 1177039361}
+  enemiesParent: {fileID: 1117741743}
   boarEnemyPrefab: {fileID: 3525771028941821081, guid: 3019959ee41f33f4db595a15eda5fd87, type: 3}
   mushroomEnemyPrefab: {fileID: 3525771028941821081, guid: c2ddf82395d5a824caab140182b824ff, type: 3}
   fairyEnemyPrefab: {fileID: 3525771028941821081, guid: 19f2e1a21affa45458f6a10638113c5d, type: 3}
