@@ -134,17 +134,17 @@ public class CharacterManager : MonoBehaviour
             }).ToList();
     }
 
-    public void HideCharacterSelectIcons()
-    {
-        characterSelectIconParent.gameObject.SetActive(false);
-    }
-
     public void ChooseCharacter(Character character)
     {
         chosenCharacter = character;
         HideCharacterSelectIcons();
         ClearCharacterSelectInfo();
         GameManager.instance.StartGame();
+    }
+
+    public void HideCharacterSelectIcons()
+    {
+        characterSelectIconParent.gameObject.SetActive(false);
     }
 
     public void ClearCharacterSelectInfo()
