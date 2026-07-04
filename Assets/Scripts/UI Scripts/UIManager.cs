@@ -327,14 +327,14 @@ public class UIManager : MonoBehaviour
         bool victory = GameManager.instance.Player.CurrentLife > 0;
         if(victory)
         {
-            victoryHeaderText.gameObject.SetActive(true);
-            defeatHeaderText.gameObject.SetActive(false);
+            victoryHeaderText.transform.parent.gameObject.SetActive(true);
+            defeatHeaderText.transform.parent.gameObject.SetActive(false);
             SaveDataManager.instance.SaveGame("WIN");
         }
         else
         {
-            victoryHeaderText.gameObject.SetActive(false);
-            defeatHeaderText.gameObject.SetActive(true);
+            victoryHeaderText.transform.parent.gameObject.SetActive(false);
+            defeatHeaderText.transform.parent.gameObject.SetActive(true);
             string stageFailedOn = GameManager.instance.GetCurrentStageText();
             defeatHeaderText.text = string.Format(
                 "Defeat!\nSlain on\n{0}",

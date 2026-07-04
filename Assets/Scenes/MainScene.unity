@@ -1589,7 +1589,8 @@ MonoBehaviour:
   gameEndToMainMenuButton: {fileID: 1317740983}
   characterSelectInfoText: {fileID: 584437237}
   gameAreaStageText: {fileID: 2042719948}
-  gameEndHeaderText: {fileID: 1291466977}
+  victoryHeaderText: {fileID: 1528805165}
+  defeatHeaderText: {fileID: 1291466977}
   gameEndDeckInfoText: {fileID: 668882671}
   statsTextPrefab: {fileID: 5241366532384666509, guid: 873d45a5faff7b7448649a82fba18849, type: 3}
 --- !u!114 &231419621
@@ -6947,8 +6948,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 849095019}
   - {fileID: 1528805164}
+  - {fileID: 849095019}
   - {fileID: 629891848}
   - {fileID: 423619598}
   m_Father: {fileID: 1107327320}
@@ -8733,6 +8734,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2593559091748150353, guid: 941179973a9fac949a33b88281f190e7, type: 3}
   m_PrefabInstance: {fileID: 1528805163}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1528805165 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6603554247330976295, guid: 941179973a9fac949a33b88281f190e7, type: 3}
+  m_PrefabInstance: {fileID: 1528805163}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1533433786
 GameObject:
   m_ObjectHideFlags: 0
