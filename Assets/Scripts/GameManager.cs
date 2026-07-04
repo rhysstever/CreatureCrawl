@@ -5,6 +5,7 @@ public enum MenuState
 {
     MainMenu,
     Stats,
+    Credits,
     CharacterSelect,
     Game,
     GameEnd
@@ -97,14 +98,10 @@ public class GameManager : MonoBehaviour
                 // Start playing overworld music
                 AudioManager.instance.PlayOverworldMusic();
                 break;
-            case MenuState.Stats:
-                break;
             case MenuState.CharacterSelect:
                 CharacterManager.instance.ShowCharacterSelectIcons();
                 ChangeGameState(GameState.None);
                 ChangeCombatState(CombatState.None);
-                break;
-            case MenuState.Game:
                 break;
             case MenuState.GameEnd:
                 // Start playing overworld music

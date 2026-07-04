@@ -10,16 +10,18 @@ public class UIManager : MonoBehaviour
 
     // Set in inspector
     [SerializeField]    // MenuState UI Parents
-    private GameObject mainMenuUIParent, statsParent, characterSelectUIParent, gameUIParent, gameEndUIParent;
+    private GameObject mainMenuUIParent, statsParent, creditsParent, characterSelectUIParent, gameUIParent, gameEndUIParent;
     [SerializeField]    // Sub-menu UI Parents
-    private GameObject mainMenuButtonsParent, statsTextParent, combatUIParent, nonCombatUIParent, cardSelectionUIParent, wellUIParent;
+    private GameObject statsTextParent, characterSelectInfoPanel, combatUIParent, nonCombatUIParent, cardSelectionUIParent, wellUIParent;
     [SerializeField]    // Game Sub-menu UI Parents
     private GameObject gameInfoUIParent, viewDeckUIParent, viewDeckCardsUIParent;
     [SerializeField]    // Turn Banners
     private GameObject playerTurnBanner, enemyTurnBanner;
     [SerializeField]    // Buttons
-    private Button mainMenuToCharacterSelectButton, mainMenuToStatsButton, quitButton,  // Main Menu Buttons
+    private Button mainMenuToCharacterSelectButton, mainMenuToStatsButton, mainMenuToCreditsButton, quitButton,  // Main Menu Buttons
         statsToMainMenuButton, statsClearHistoryButton,                                 // Stats Buttons
+        creditsToMainMenuButton,                                                        // Credits Buttons
+        characterSelectToMainMenuButton,                                                // Character Select Buttons
         gameInfoButton, closeGameInfoButton, viewDeckButton, closeViewDeckButton,       // Game Top Buttons
         endTurnButton, selectCardButton, skipButton, drinkWellButton,                   // Game Buttons
         gameEndToMainMenuButton;                                                        // GameEnd Buttons
@@ -54,15 +56,27 @@ public class UIManager : MonoBehaviour
         // === Set up button listeners ===
         // Main menu buttons
         mainMenuToCharacterSelectButton.onClick.AddListener(() => {
-            mainMenuButtonsParent.SetActive(false);
+            mainMenuToCharacterSelectButton.gameObject.SetActive(false);
+            mainMenuToCreditsButton.gameObject.SetActive(false);
+            mainMenuToStatsButton.gameObject.SetActive(false);
+            quitButton.gameObject.SetActive(false);
             Camera.main.GetComponent<CameraPan>().PanCameraDown();
         });
         mainMenuToStatsButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.Stats));
+        mainMenuToCreditsButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.Credits));
         quitButton.onClick.AddListener(() => Application.Quit());
         // Stats buttons
         statsToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
         statsClearHistoryButton.onClick.AddListener(() => {
             SaveDataManager.instance.ClearSaveData();
+            GameManager.instance.ChangeMenuState(MenuState.MainMenu);
+        });
+        // Credits buttons
+        creditsToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
+        // Character Select buttons
+        characterSelectToMainMenuButton.onClick.AddListener(() => {
+            CharacterManager.instance.HideCharacterSelectIcons();
+            CharacterManager.instance.ClearCharacterSelectInfo();
             GameManager.instance.ChangeMenuState(MenuState.MainMenu);
         });
         // Game buttons
@@ -103,6 +117,7 @@ public class UIManager : MonoBehaviour
         // Hide all parents, then show the ui parent based on the MenuState
         mainMenuUIParent.SetActive(false);
         statsParent.SetActive(false);
+        creditsParent.SetActive(false);
         characterSelectUIParent.SetActive(false);
         gameUIParent.SetActive(false);
         gameEndUIParent.SetActive(false);
@@ -111,12 +126,18 @@ public class UIManager : MonoBehaviour
         {
             case MenuState.MainMenu:
                 mainMenuUIParent.SetActive(true);
-                mainMenuButtonsParent.SetActive(true);
+                mainMenuToCharacterSelectButton.gameObject.SetActive(true);
+                mainMenuToCreditsButton.gameObject.SetActive(true);
+                mainMenuToStatsButton.gameObject.SetActive(true);
+                quitButton.gameObject.SetActive(true);
                 mainMenuToStatsButton.interactable = SaveDataManager.instance.HasSaveData;
                 break;
             case MenuState.Stats:
                 statsParent.SetActive(true);
                 UpdateRunHistory();
+                break;
+            case MenuState.Credits:
+                creditsParent.SetActive(true);
                 break;
             case MenuState.CharacterSelect:
                 characterSelectUIParent.SetActive(true);
@@ -211,7 +232,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateCharacterSelectInfo()
     {
-        characterSelectInfoText.text = "Choose Your Warrior";
+        characterSelectInfoPanel.SetActive(false);
     }
 
     public void UpdateCharacterSelectInfo(Character character)
@@ -221,6 +242,7 @@ public class UIManager : MonoBehaviour
             character == Character.Locked ? "???" : character.ToString(),
             CharacterManager.instance.GetCharacterDeckDescription(character)
         );
+        characterSelectInfoPanel.SetActive(true);
     }
 
     public void UpdateStageText()
