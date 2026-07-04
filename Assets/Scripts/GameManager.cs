@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour
         int area = currentAreaIndex + 1;
         string stageText = currentStageIndex switch
         {
-            0 => "1",
+            0 => "T",
             3 => "W",
             6 => "W",
             _ => currentStageIndex.ToString(),

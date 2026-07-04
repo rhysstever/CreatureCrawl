@@ -57,15 +57,17 @@ public class Unit : MonoBehaviour
     public virtual void Reset()
     {
         currentLife = maxLife;
-        currentDefense = 0;
-        unitEffects.ResetAllEffects();
-        UpdateDefenseUIText();
         UpdateLifeUIText();
+        currentDefense = 0;
+        UpdateDefenseUIText();
+        unitEffects.ResetAllEffects();
     }
 
     public void PostCombatReset()
     {
-        Reset();
+        currentDefense = 0;
+        UpdateDefenseUIText();
+        unitEffects.ResetAllEffects();
         RemoveEffectsUI();
         CharacterManager.instance.ResetSummons();
     }
