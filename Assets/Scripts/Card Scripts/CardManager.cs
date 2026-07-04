@@ -67,6 +67,7 @@ public class CardManager : MonoBehaviour
             string[] cardBaseFiles = Directory.GetFiles(cardBaseRarityPath, "*.png", SearchOption.TopDirectoryOnly);
             foreach(var cardBaseFile in cardBaseFiles)
             {
+                // Replace with Resources.Load<Sprite>(...)
                 var cardBaseSprite = AssetDatabase.LoadAssetAtPath(cardBaseFile, typeof(Sprite));
 
                 if(cardBaseSprite != null)
@@ -264,6 +265,7 @@ public class CardManager : MonoBehaviour
 
         foreach(var file in files)
         {
+            // Replace with Resources.Load<Sprite>(...)
             var sprite = AssetDatabase.LoadAssetAtPath(file, typeof(Sprite));
 
             if(sprite != null)
