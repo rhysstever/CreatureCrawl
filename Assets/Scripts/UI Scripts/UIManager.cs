@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
         endTurnButton, selectCardButton, skipButton, drinkWellButton,                   // Game Buttons
         gameEndToMainMenuButton;                                                        // GameEnd Buttons
     [SerializeField]    // Texts
-    private TMP_Text characterSelectInfoText, gameAreaStageText, gameEndHeaderText, gameEndDeckInfoText;
+    private TMP_Text characterSelectInfoText, gameAreaStageText, victoryHeaderText, defeatHeaderText, gameEndDeckInfoText;
     [SerializeField]
     private GameObject statsTextPrefab;
 
@@ -327,23 +327,19 @@ public class UIManager : MonoBehaviour
         bool victory = GameManager.instance.Player.CurrentLife > 0;
         if(victory)
         {
-            gameEndHeaderText.text = "VICTORY!";
+            victoryHeaderText.gameObject.SetActive(true);
+            defeatHeaderText.gameObject.SetActive(false);
             SaveDataManager.instance.SaveGame("WIN");
         }
         else
         {
+            victoryHeaderText.gameObject.SetActive(false);
+            defeatHeaderText.gameObject.SetActive(true);
             string stageFailedOn = GameManager.instance.GetCurrentStageText();
-            gameEndHeaderText.text = string.Format(
-                "DEFEAT!\nSlain on {0}",
+            defeatHeaderText.text = string.Format(
+                "Defeat!\nSlain on\n{0}",
                 stageFailedOn);
             SaveDataManager.instance.SaveGame(stageFailedOn);
-        }
-
-        // Check for the current spirit card, which has no starter
-        string spiritText = "None";
-        if(CardManager.instance.GetCurrentCardData(Slot.Spirit) != null)
-        {
-            spiritText = CardManager.instance.GetCurrentCardData(Slot.Spirit).Name;
         }
 
         gameEndDeckInfoText.text = string.Format(
@@ -359,7 +355,7 @@ public class UIManager : MonoBehaviour
             CardManager.instance.GetCurrentCardData(Slot.MainHand).Name,
             CardManager.instance.GetCurrentCardData(Slot.OffHand).Name,
             CardManager.instance.GetCurrentCardData(Slot.Ally).Name,
-            spiritText,
+            CardManager.instance.GetCurrentCardData(Slot.Spirit).Name,
             CardManager.instance.GetCurrentCardData(Slot.Spell).Name,
             CardManager.instance.GetCurrentCardData(Slot.Drink).Name);
     }
