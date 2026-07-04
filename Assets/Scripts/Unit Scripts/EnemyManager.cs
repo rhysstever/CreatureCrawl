@@ -19,9 +19,7 @@ public class EnemyManager : MonoBehaviour
 
     // Instantiated in inspector
     [SerializeField]
-    private Transform enemies;
-    [SerializeField]
-    private List<Transform> enemySpawnPositions;
+    private Transform enemiesParent;
     [SerializeField]
     private GameObject boarEnemyPrefab, mushroomEnemyPrefab, fairyEnemyPrefab, entEnemyPrefab, hagEnemyPrefab;
     //oozeEnemyPrefab, batSwarmEnemyPrefab, zombieEnemyPrefab, shadowEnemyPrefab, necromancerEnemyPrefab;
@@ -172,7 +170,16 @@ public class EnemyManager : MonoBehaviour
     public bool IsWaveOver()
     {
         // Check all enemies and if none have health, the wave is over
-        return enemies.GetComponentsInChildren<Enemy>().Where(enemy => enemy.CurrentLife > 0).ToList().Count == 0;
+        for(int i = 0; i < enemiesParent.childCount; i++)
+        {
+            Enemy enemy = GetEnemyAtPosition(i);
+            if(enemy != null && enemy.CurrentLife > 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void IncrementWaveNum()
@@ -236,22 +243,28 @@ public class EnemyManager : MonoBehaviour
 
     public void SpawnSummon(GameObject enemy)
     {
-        // Get leftmost available position
-        int[] currentPositions = GetCurrentEnemies().Select(e => e.PositionIndex).ToArray();
-        int positionIndex = -1;
-        for(int i = 0; i < enemySpawnPositions.Count; i++)
+        // Find current open spots
+        List<int> enemiesSpots = new List<int>();
+        for(int i = 0; i < enemiesParent.childCount; i++)
         {
-            if(!currentPositions.Contains(i))
+            // If there is no enemy at that spot, the spot is open
+            if(GetEnemyAtPosition(i) == null)
             {
-                positionIndex = i;
-                break;
+                enemiesSpots.Add(i);
             }
         }
 
-        // Spawn the enemy at that position
-        if(positionIndex != -1)
+        // Choose a random open spots
+        int randomSpotIndex = -1;
+        if(enemiesSpots.Count > 0)
         {
-            SpawnEnemy(enemy, positionIndex);
+            randomSpotIndex = enemiesSpots[UnityEngine.Random.Range(0, enemiesSpots.Count)];
+        }
+
+        // Spawn the enemy at that position
+        if(randomSpotIndex != -1)
+        {
+            SpawnEnemy(enemy, randomSpotIndex);
         }
         else
         {
@@ -261,8 +274,7 @@ public class EnemyManager : MonoBehaviour
 
     private Enemy SpawnEnemy(GameObject enemy, int positionIndex)
     {
-        Vector2 position = enemySpawnPositions[positionIndex].position;
-        GameObject newEnemyObject = Instantiate(enemy, position, Quaternion.identity, enemies);
+        GameObject newEnemyObject = Instantiate(enemy, enemiesParent.GetChild(positionIndex));
         newEnemyObject.name = enemy.name + positionIndex;
 
         Enemy newEnemy = newEnemyObject.GetComponent<Enemy>();
@@ -282,9 +294,30 @@ public class EnemyManager : MonoBehaviour
         return currentEnemies[randomEnemyIndex];
     }
 
+    private Enemy GetEnemyAtPosition(int positionIndex)
+    {
+        if(enemiesParent.GetChild(positionIndex).childCount > 0)
+        {
+            return enemiesParent.GetChild(positionIndex).GetChild(0).GetComponent<Enemy>();
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     public List<Enemy> GetCurrentEnemies()
     {
-        return enemies.GetComponentsInChildren<Enemy>().ToList();
+        List<Enemy> enemies = new List<Enemy>();
+        for(int i = 0; i < enemiesParent.childCount; i++)
+        {
+            Enemy enemy = GetEnemyAtPosition(i);
+            if(enemy != null)
+            {
+                enemies.Add(enemy);
+            }            
+        }
+        return enemies;
     }
 
     public IEnumerator ProcessEffectsOnEnemies()
@@ -328,9 +361,13 @@ public class EnemyManager : MonoBehaviour
     {
         currentWaveNum = -1;
 
-        for(int i = enemies.childCount - 1; i >= 0; i--)
+        for(int i = 0; i < enemiesParent.childCount; i++)
         {
-            Destroy(enemies.GetChild(i).gameObject);
+            Enemy enemy = GetEnemyAtPosition(i);
+            if(enemy != null)
+            {
+                Destroy(enemy.gameObject);
+            }
         }
     }
 }

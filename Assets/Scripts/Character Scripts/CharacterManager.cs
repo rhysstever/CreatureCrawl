@@ -34,12 +34,12 @@ public class CharacterManager : MonoBehaviour
     private Sprite lockedHeadSprite, badgerHeadSprite, beaverHeadSprite, foxHeadSprite, opossumHeadSprite, otterHeadSprite, skunkHeadSprite;
 
     // Set at Start
+    private List<Character> charactersWonWith;
     private Dictionary<string, GameObject> allyPrefabs;
     private Dictionary<string, GameObject> spiritPrefabs;
     private Character chosenCharacter;
     private Ally ally;
     private List<GameObject> summonedSpirits;
-    private List<Character> charactersWonWith;
 
     public Character ChosenCharacter { get { return chosenCharacter; } }
     public Ally Ally { get { return ally; } }
@@ -55,13 +55,13 @@ public class CharacterManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        charactersWonWith = new List<Character>();
         allyPrefabs = LoadAllyPrefabs();
         spiritPrefabs = LoadSpiritPrefabs();
     }
 
     void Start()
     {
-        charactersWonWith = new List<Character>();
         summonedSpirits = new List<GameObject>();
         HideCharacterSelectIcons();
     }
