@@ -52,8 +52,9 @@ public class EnemyManager : MonoBehaviour
     private List<EnemyWave> SetEnemyWaves()
     {
         List<EnemyWave> combatRounds = new() {
+            // Tutorial Level
+            new EnemyWave(EnemyType.Boar, 1),   
             // Area 1 enemies
-            new EnemyWave(EnemyType.Boar, 1),   // Tutorial Level
             new EnemyWave(EnemyType.Boar, 2),
             new EnemyWave(EnemyType.Mushroom, 2),
             new EnemyWave(EnemyType.Fairy, 3),
@@ -62,8 +63,8 @@ public class EnemyManager : MonoBehaviour
             // Area 2 enemies
             //new EnemyWave(EnemyType.Ooze, 1),
             //new EnemyWave(EnemyType.Bat, 3),
-            //new EnemyWave(EnemyType.Zombie, #),
-            //new EnemyWave(EnemyType.Shadow, #),
+            //new EnemyWave(EnemyType.Zombie, 2),
+            //new EnemyWave(EnemyType.Shadow, 1),
             //new EnemyWave(EnemyType.Necromancer, #, true),
         };
 

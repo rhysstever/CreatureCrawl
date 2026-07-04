@@ -8,22 +8,18 @@ public class UnitEffects
 
     public UnitEffects()
     {
-        Effect burnBuffEffect = new Effect(new Buff(ActionType.Burn, 0), false);
-        Effect poisonBuffEffect = new Effect(new Buff(ActionType.Poison, 0), false);
-        Effect spikeBuffEffect = new Effect(new Buff(ActionType.Spike, 0), false);
-
         effects = new List<Effect>
         {
             new Effect(new Buff(ActionType.WeaponAttack, 0), false),
             new Effect(new Buff(ActionType.SpellAttack, 0), false),
             new Effect(new Buff(ActionType.Defend, 0), false),
             new Effect(new Buff(ActionType.Heal, 0), false),
-            burnBuffEffect,
-            poisonBuffEffect,
-            spikeBuffEffect,
-            new Effect(new Action(ActionType.Burn, 0, TargetType.Self), true, burnBuffEffect),
-            new Effect(new Action(ActionType.Poison, 0, TargetType.Self), true, poisonBuffEffect),
-            new Effect(new Action(ActionType.Spike, 0, TargetType.Self), false, spikeBuffEffect),
+            new Effect(new Buff(ActionType.Burn, 0), false),
+            new Effect(new Buff(ActionType.Poison, 0), false),
+            new Effect(new Buff(ActionType.Spike, 0), false),
+            new Effect(new Action(ActionType.Burn, 0, TargetType.Self), true),
+            new Effect(new Action(ActionType.Poison, 0, TargetType.Self), true),
+            new Effect(new Action(ActionType.Spike, 0, TargetType.Self), false),
             new Effect(new Buff(ActionType.Summon, 0), false)
         };
     }

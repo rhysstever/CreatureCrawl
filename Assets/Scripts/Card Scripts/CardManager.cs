@@ -174,7 +174,7 @@ public class CardManager : MonoBehaviour
             //    new Summon(1, "Chipmunk", new List<Action> { ... })
             //}),
             new CardData("Hamster", Slot.Ally, Rarity.Rare, new List<Action> { 
-                new Summon(1, "Hamster", new List<Action> { new Action(ActionType.Draw, 1, TargetType.None) }) 
+                new Summon(1, "Hamster", new List<Action> { new Action(ActionType.Draw, 1, TargetType.Player) }) 
             }),
 
             // Spell cards
@@ -204,7 +204,7 @@ public class CardManager : MonoBehaviour
             // Drink cards
             new CardData("Cup", Slot.Drink, Rarity.Basic, new List<Action> { new Action(ActionType.Heal, 1, TargetType.Player) }),
             new CardData("Tankard", Slot.Drink, Rarity.Basic, new List<Action> {
-                new Action(ActionType.Heal, 1, TargetType.None),
+                new Action(ActionType.Heal, 1, TargetType.Player),
                 new Action(ActionType.WeaponAttack, 1, TargetType.RandomFoe)
             }),
             new CardData("Goblet", Slot.Drink, Rarity.Basic, new List<Action> { new Action(ActionType.Heal, 2, TargetType.Player) }),
