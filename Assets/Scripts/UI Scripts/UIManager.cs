@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
         gameInfoButton, closeGameInfoButton, viewDeckButton, closeViewDeckButton,       // Game Top Buttons
         endTurnButton, selectCardButton, skipButton, drinkWellButton,                   // Game Buttons
         gameEndToMainMenuButton;                                                        // GameEnd Buttons
+    [SerializeField]
+    private Toggle freePlayToggle;
     [SerializeField]    // Texts
     private TMP_Text characterSelectInfoText, gameAreaStageText, victoryHeaderText, defeatHeaderText, gameEndDeckInfoText;
     [SerializeField]
@@ -60,6 +62,7 @@ public class UIManager : MonoBehaviour
             mainMenuToCreditsButton.gameObject.SetActive(false);
             mainMenuToStatsButton.gameObject.SetActive(false);
             quitButton.gameObject.SetActive(false);
+            freePlayToggle.gameObject.SetActive(false);
             Camera.main.GetComponent<CameraPan>().PanCameraDown();
         });
         mainMenuToStatsButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.Stats));
@@ -110,6 +113,8 @@ public class UIManager : MonoBehaviour
         });
         // Game end buttons
         gameEndToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
+
+        freePlayToggle.onValueChanged.AddListener((newValue) => CharacterManager.instance.ToggleFreePlay(newValue));
     }
 
     public void UpdateMenuUI(MenuState menuState)
@@ -130,6 +135,7 @@ public class UIManager : MonoBehaviour
                 mainMenuToCreditsButton.gameObject.SetActive(true);
                 mainMenuToStatsButton.gameObject.SetActive(true);
                 quitButton.gameObject.SetActive(true);
+                freePlayToggle.gameObject.SetActive(true);
                 mainMenuToStatsButton.interactable = SaveDataManager.instance.HasSaveData;
                 break;
             case MenuState.Stats:

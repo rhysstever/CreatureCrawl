@@ -34,6 +34,7 @@ public class CharacterManager : MonoBehaviour
     private Sprite lockedHeadSprite, badgerHeadSprite, beaverHeadSprite, foxHeadSprite, opossumHeadSprite, otterHeadSprite, skunkHeadSprite;
 
     // Set at Start
+    private bool isFreePlayOn;
     private List<Character> charactersWonWith;
     private Dictionary<string, GameObject> allyPrefabs;
     private Dictionary<string, GameObject> spiritPrefabs;
@@ -41,6 +42,7 @@ public class CharacterManager : MonoBehaviour
     private Ally ally;
     private List<GameObject> summonedSpirits;
 
+    public bool IsFreePlayOn { get { return isFreePlayOn; } }
     public Character ChosenCharacter { get { return chosenCharacter; } }
     public Ally Ally { get { return ally; } }
 
@@ -55,6 +57,7 @@ public class CharacterManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        isFreePlayOn = false;
         charactersWonWith = new List<Character>();
         allyPrefabs = LoadAllyPrefabs();
         spiritPrefabs = LoadSpiritPrefabs();
@@ -119,8 +122,17 @@ public class CharacterManager : MonoBehaviour
 
     public void ShowCharacterSelectIcons()
     {
-        characterSelectIconParent.gameObject.SetActive(true);
         charactersWonWith = GetCharactersWonWith();
+        for(int i = 0; i < characterSelectIconParent.childCount; i++) 
+        {
+            characterSelectIconParent.transform.GetChild(i).GetComponent<CharacterSelectIcon>().UpdatedLockedState();
+        }
+        characterSelectIconParent.gameObject.SetActive(true);
+    }
+
+    public void ToggleFreePlay(bool newValue)
+    {
+        isFreePlayOn = newValue;
     }
 
     private List<Character> GetCharactersWonWith()
@@ -129,8 +141,16 @@ public class CharacterManager : MonoBehaviour
         return runHistoryList
             .Where(run => run.progress == "WIN")
             .Select(run => {
-                Character.TryParse(run.character, out Character runCharacter);
-                return runCharacter;
+                if(run.character.Contains("*"))
+                {
+                    Character.TryParse(run.character, out Character freePlayRunCharacter);
+                    return freePlayRunCharacter;
+                }
+                else
+                {
+                    Character.TryParse(run.character, out Character runCharacter);
+                    return runCharacter;
+                }
             }).ToList();
     }
 
@@ -205,6 +225,11 @@ public class CharacterManager : MonoBehaviour
 
     public bool IsCharacterUnlocked(Character character)
     {
+        if(isFreePlayOn)
+        {
+            return true;
+        }
+
         return character switch
         {
             Character.Beaver => true,
@@ -218,7 +243,7 @@ public class CharacterManager : MonoBehaviour
     }
 
     private bool HasWonWithCharacter(Character character)
-    {
+    { 
         if(!SaveDataManager.instance.HasSaveData || character == Character.Locked)
         {
             return false;

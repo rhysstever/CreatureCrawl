@@ -69,8 +69,10 @@ public class SaveDataManager : MonoBehaviour
         saveData.date = string.Format("{0}/{1}/{2} {3}:{4}", today.Year, today.Month, today.Day, today.Hour, today.Minute);
         // Current progress
         saveData.progress = progress;
+        // Character info
+        string freePlaySymbol = CharacterManager.instance.IsFreePlayOn ? "*" : "";
+        saveData.character = string.Format("{0}{1}", CharacterManager.instance.ChosenCharacter, freePlaySymbol);
         // Deck info
-        saveData.character = CharacterManager.instance.ChosenCharacter.ToString();
         saveData.mainHand = DeckManager.instance.GetCardDataBySlot(Slot.MainHand).Name;
         saveData.offHand = DeckManager.instance.GetCardDataBySlot(Slot.OffHand).Name;
         saveData.ally = DeckManager.instance.GetCardDataBySlot(Slot.Ally).Name;

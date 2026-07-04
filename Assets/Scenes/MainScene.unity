@@ -1757,6 +1757,7 @@ MonoBehaviour:
   skipButton: {fileID: 1125868934}
   drinkWellButton: {fileID: 2017126621}
   gameEndToMainMenuButton: {fileID: 1317740983}
+  freePlayToggle: {fileID: 222665568}
   characterSelectInfoText: {fileID: 1888724740}
   gameAreaStageText: {fileID: 2042719948}
   victoryHeaderText: {fileID: 1528805165}

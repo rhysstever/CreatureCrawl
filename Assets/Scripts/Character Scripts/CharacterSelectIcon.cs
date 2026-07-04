@@ -15,7 +15,11 @@ public class CharacterSelectIcon : MonoBehaviour
     void Start()
     {
         characterIconSelectedObj.SetActive(false);
+        UpdatedLockedState();
+    }
 
+    public void UpdatedLockedState()
+    {
         // Determine head sprite used
         isUnlocked = CharacterManager.instance.IsCharacterUnlocked(character);
         characterSpriteRenderer.sprite = CharacterManager.instance.GetCharacterHeadSprite(isUnlocked ? character : Character.Locked);
