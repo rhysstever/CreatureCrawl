@@ -208,12 +208,16 @@ public class CardManager : MonoBehaviour
                 new Action(ActionType.WeaponAttack, 1, TargetType.RandomFoe)
             }),
             new CardData("Goblet", Slot.Drink, Rarity.Basic, new List<Action> { new Action(ActionType.Heal, 2, TargetType.Player) }),
-            new CardData("Pouch", Slot.Drink, Rarity.Uncommon, new List<Action> { new Action(ActionType.Draw, 1, TargetType.Player) }),
+            new CardData("Waterskin", Slot.Drink, Rarity.Uncommon, new List<Action> {
+                new Action(ActionType.Heal, 1, TargetType.Player),
+                new Buff(ActionType.Heal, 1)
+            }),
             new CardData("Potion", Slot.Drink, Rarity.Uncommon, new List<Action> { new Action(ActionType.Heal, 4, TargetType.Player) }),
             new CardData("Flagon", Slot.Drink, Rarity.Uncommon, new List<Action> {
                 new Action(ActionType.Heal, 1, TargetType.Player),
                 new Action(ActionType.Poison, 2, TargetType.Foe)
             }),
+            //new CardData("Pouch", Slot.Drink, Rarity.Rare, new List<Action> { new Action(ActionType.Draw, 1, TargetType.Player) }),
             new CardData("Chalice", Slot.Drink, Rarity.Rare, new List<Action> {
                 new Action(ActionType.Heal, 1, TargetType.Player),
                 new Action(ActionType.Cleanse, 0, TargetType.Player)
@@ -221,7 +225,7 @@ public class CardManager : MonoBehaviour
             //new CardData("Vial", Slot.Drink, Rarity.Basic, new List<Action> { new Action(...) }),
             //new CardData("Barrel", Slot.Drink, Rarity.Basic, new List<Action> { new Action(...) }),
         };
-
+        
         return cards;
     }
     #endregion Card Creation
