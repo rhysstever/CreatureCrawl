@@ -332,17 +332,17 @@ public class Unit : MonoBehaviour
 
     public IEnumerator ProcessEffects()
     {
-        WaitForSeconds effectTriggerToDamageDelayWait = new WaitForSeconds(0.5f);
+        WaitForSeconds halfSecondDelayWait = new WaitForSeconds(0.5f);
         WaitForSeconds turnBannerDelayWait = new WaitForSeconds(UIManager.instance.TurnBannerVisibleTime);
 
         // Process any burn on the unit
         if(unitEffects.GetEffectAmount(ActionType.Burn) > 0)
         {
-            yield return effectTriggerToDamageDelayWait;
+            yield return halfSecondDelayWait;
             AudioManager.instance.PlayBurnAudio();
             unitSpriteRenderer.color = ParticlesManager.instance.BurnColor;
             burnParticleSystem.EnableParticles();
-            yield return effectTriggerToDamageDelayWait;
+            yield return halfSecondDelayWait;
             unitSpriteRenderer.color = ParticlesManager.instance.ResetColor;
             TakeDamage(unitEffects.GetEffectAmount(ActionType.Burn), null, DamageType.Burn);
             unitEffects.UpdateEffectAmount(ActionType.Burn, -1);
@@ -364,11 +364,11 @@ public class Unit : MonoBehaviour
         // Process any poison on the unit
         if(unitEffects.GetEffectAmount(ActionType.Poison) > 0)
         {
-            yield return effectTriggerToDamageDelayWait;
+            yield return halfSecondDelayWait;
             AudioManager.instance.PlayPoisonAudio();
             unitSpriteRenderer.color = ParticlesManager.instance.PoisonColor;
             poisonParticleSystem.EnableParticles();
-            yield return effectTriggerToDamageDelayWait;
+            yield return halfSecondDelayWait;
             unitSpriteRenderer.color = ParticlesManager.instance.ResetColor;
             TakeDamage(unitEffects.GetEffectAmount(ActionType.Poison), null, DamageType.Poison);
             unitEffects.UpdateEffectAmount(ActionType.Poison, -1);
@@ -381,8 +381,8 @@ public class Unit : MonoBehaviour
             UIManager.instance.TogglePlayerTurnBanner(true);
             yield return turnBannerDelayWait;
             UIManager.instance.TogglePlayerTurnBanner(false);
-            yield return effectTriggerToDamageDelayWait;
             DeckManager.instance.DealHand();
+            yield return halfSecondDelayWait;
             EnemyManager.instance.GetCurrentEnemies().ForEach(e => e.UpdateNextActionUI());
         }
 

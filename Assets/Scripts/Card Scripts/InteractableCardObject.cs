@@ -25,6 +25,8 @@ public class InteractableCardObject : CardObject
         dragOffset = Vector2.zero;
         cardFieldCollider = DeckManager.instance.FieldCollider;
         isInField = false;
+
+        cardCollider.enabled = GameManager.instance.CurrentCombatState == CombatState.PlayerTurn;
     }
 
     // Update is called once per frame
