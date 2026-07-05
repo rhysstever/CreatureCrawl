@@ -21,6 +21,12 @@ public class Player : Unit
         base.Reset();
     }
 
+    public override void PostCombatReset()
+    {
+        base.PostCombatReset();
+        CharacterManager.instance.ResetSummons();
+    }
+
     public override void DealDamage(int baseAttack, Unit target, DamageType damageType)
     {
         int amount = baseAttack;

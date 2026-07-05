@@ -62,13 +62,12 @@ public class Unit : MonoBehaviour
         PostCombatReset();
     }
 
-    public void PostCombatReset()
+    public virtual void PostCombatReset()
     {
         currentDefense = 0;
         UpdateDefenseUIText();
         unitEffects.ResetAllEffects();
         RemoveEffectsUI();
-        CharacterManager.instance.ResetSummons();
     }
 
     public virtual void DealDamage(int amount, Unit target, DamageType damageType)
