@@ -58,17 +58,16 @@ public class CardManager : MonoBehaviour
     {
         Dictionary<(Slot, Rarity), Sprite> newCardBaseSprites = new Dictionary<(Slot, Rarity), Sprite>();
 
-        string cardBaseDirPath = "Assets/Resources/Images/CardBase/";
+        string cardBaseResDirPath = "Images/CardBase";
 
         // Check in each rarity sub directory
         foreach(Rarity rarity in Enum.GetValues(typeof(Rarity)))
         {
-            string cardBaseRarityPath = string.Format("{0}{1}/", cardBaseDirPath, rarity);
-            string[] cardBaseFiles = Directory.GetFiles(cardBaseRarityPath, "*.png", SearchOption.TopDirectoryOnly);
-            foreach(var cardBaseFile in cardBaseFiles)
+            string cardBaseRarityPath = string.Format("{0}/{1}", cardBaseResDirPath, rarity);
+            UnityEngine.Object[] cardBaseSpriteObjs = Resources.LoadAll(cardBaseRarityPath, typeof(Sprite));
+            foreach(var cardBaseSpriteObj in cardBaseSpriteObjs)
             {
-                // Replace with Resources.Load<Sprite>(...)
-                var cardBaseSprite = AssetDatabase.LoadAssetAtPath(cardBaseFile, typeof(Sprite));
+                Sprite cardBaseSprite = (Sprite)cardBaseSpriteObj;
 
                 if(cardBaseSprite != null)
                 {
@@ -85,7 +84,7 @@ public class CardManager : MonoBehaviour
                         _ => Slot.MainHand
                     };
 
-                    newCardBaseSprites.Add((slot, rarity), (Sprite)cardBaseSprite);
+                    newCardBaseSprites.Add((slot, rarity), cardBaseSprite);
                 }
                 else
                 {
@@ -101,17 +100,16 @@ public class CardManager : MonoBehaviour
     {
         List<Sprite> spriteList = new List<Sprite>();
 
-        string cardArtFilePath = "Assets/Resources/Images/CardArt/";
-        string[] files = Directory.GetFiles(cardArtFilePath, "*.png", SearchOption.TopDirectoryOnly);
+        string cardArtResDirPath = "Images/CardArt";
+        UnityEngine.Object[] cardArtSpriteObjs = Resources.LoadAll(cardArtResDirPath, typeof(Sprite));
 
-        foreach(var file in files)
+        foreach(var cardArtSpriteObj in cardArtSpriteObjs)
         {
-            // Replace with Resources.Load<Sprite>(...)
-            var sprite = AssetDatabase.LoadAssetAtPath(file, typeof(Sprite));
+            Sprite sprite = (Sprite)cardArtSpriteObj;
 
             if(sprite != null)
             {
-                spriteList.Add((Sprite)sprite);
+                spriteList.Add(sprite);
             }
             else
             {

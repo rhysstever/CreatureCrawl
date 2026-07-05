@@ -75,16 +75,16 @@ public class CharacterManager : MonoBehaviour
         // Ally Sprites
         Dictionary<string, GameObject> newAllyPrefabs = new Dictionary<string, GameObject>();
 
-        string allyPrefabFilePath = "Assets/Prefabs/Units/Allies/";
-        string[] allyPrefabFiles = Directory.GetFiles(allyPrefabFilePath, "*.prefab", SearchOption.TopDirectoryOnly);
+        string allyPrefabResDirPath = "Prefabs/Units/Allies";
+        UnityEngine.Object[] allyPrefabObjs = Resources.LoadAll(allyPrefabResDirPath, typeof(GameObject));
 
-        foreach(var allyPrefabFile in allyPrefabFiles)
+        foreach(var allyPrefabObj in allyPrefabObjs)
         {
-            var allyPrefab = AssetDatabase.LoadAssetAtPath(allyPrefabFile, typeof(GameObject));
+            GameObject allyPrefab = (GameObject)allyPrefabObj;
 
             if(allyPrefab != null)
             {
-                newAllyPrefabs.Add(allyPrefab.name, (GameObject)allyPrefab);
+                newAllyPrefabs.Add(allyPrefab.name, allyPrefab);
             }
             else
             {
@@ -99,16 +99,16 @@ public class CharacterManager : MonoBehaviour
     {
         Dictionary<string, GameObject> newSpiritPrefabs = new Dictionary<string, GameObject>();
 
-        string spiritPrefabFilePath = "Assets/Prefabs/Units/Spirits/";
-        string[] spiritPrefabFiles = Directory.GetFiles(spiritPrefabFilePath, "*.prefab", SearchOption.TopDirectoryOnly);
+        string spiritPrefabResDirPath = "Prefabs/Units/Spirits";
+        UnityEngine.Object[] spiritPrefabObjs = Resources.LoadAll(spiritPrefabResDirPath, typeof(GameObject));
 
-        foreach(var spiritPrefabFile in spiritPrefabFiles)
+        foreach(var spiritPrefabObj in spiritPrefabObjs)
         {
-            var spiritPrefab = AssetDatabase.LoadAssetAtPath(spiritPrefabFile, typeof(GameObject));
+            GameObject spiritPrefab = (GameObject)spiritPrefabObj;
 
             if(spiritPrefab != null)
             {
-                newSpiritPrefabs.Add(spiritPrefab.name, (GameObject)spiritPrefab);
+                newSpiritPrefabs.Add(spiritPrefab.name, spiritPrefab);
             }
             else
             {
