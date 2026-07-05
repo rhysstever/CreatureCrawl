@@ -150,13 +150,11 @@ public class InteractableCardObject : CardObject
             {
                 // If not in the playing field, it should no longer be dragged
                 isBeingDragged = false;
+                // Move the card back to its original position and rotation
+                transform.position = savedPos;
+                transform.eulerAngles = new Vector3(0f, 0f, savedRot);
             }
         }
-
-        // If the card is not in the playing field OR targets but didnt have one,
-        // move the card back to its original position
-        transform.position = savedPos;
-        transform.eulerAngles = new Vector3(0f, 0f, savedRot);
     }
 
     private void PlayCard(GameObject target)
