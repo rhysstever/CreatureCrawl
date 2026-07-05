@@ -78,18 +78,14 @@ public class AudioManager : MonoBehaviour
     #region Music
     public void PlayOverworldMusic()
     {
-        //overworldMusic.SetActive(true);
-        //combatMusic.SetActive(false);
-        overworldMusic.volume = 1f;
-        combatMusic.volume = 0f;
+        overworldMusic.mute = false;
+        combatMusic.mute = true;
     }
 
     public void PlayCombatMusic()
     {
-        //combatMusic.SetActive(true);
-        //overworldMusic.SetActive(false);
-        overworldMusic.volume = 0f;
-        combatMusic.volume = 1f;
+        overworldMusic.mute = true;
+        combatMusic.mute = false;
     }
     #endregion Music
 
