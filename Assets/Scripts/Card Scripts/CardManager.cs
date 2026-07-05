@@ -97,6 +97,31 @@ public class CardManager : MonoBehaviour
         return newCardBaseSprites;
     }
 
+    private List<Sprite> LoadCardArtSprites()
+    {
+        List<Sprite> spriteList = new List<Sprite>();
+
+        string cardArtFilePath = "Assets/Resources/Images/CardArt/";
+        string[] files = Directory.GetFiles(cardArtFilePath, "*.png", SearchOption.TopDirectoryOnly);
+
+        foreach(var file in files)
+        {
+            // Replace with Resources.Load<Sprite>(...)
+            var sprite = AssetDatabase.LoadAssetAtPath(file, typeof(Sprite));
+
+            if(sprite != null)
+            {
+                spriteList.Add((Sprite)sprite);
+            }
+            else
+            {
+                Debug.Log("Error! Sprite not loaded");
+            }
+        }
+
+        return spriteList;
+    }
+
     #region Card Creation
     private List<CardData> CardCreation()
     {
@@ -254,31 +279,6 @@ public class CardManager : MonoBehaviour
         {
             TutorialManager.instance.TryShowPlayedFirstAttackPanel();
         }
-    }
-
-    private List<Sprite> LoadCardArtSprites()
-    {
-        List<Sprite> spriteList = new List<Sprite>();
-
-        string cardArtFilePath = "Assets/Resources/Images/CardArt/";
-        string[] files = Directory.GetFiles(cardArtFilePath, "*.png", SearchOption.TopDirectoryOnly);
-
-        foreach(var file in files)
-        {
-            // Replace with Resources.Load<Sprite>(...)
-            var sprite = AssetDatabase.LoadAssetAtPath(file, typeof(Sprite));
-
-            if(sprite != null)
-            {
-                spriteList.Add((Sprite)sprite);
-            }
-            else
-            {
-                Debug.Log("Error! Sprite not loaded");
-            }
-        }
-
-        return spriteList;
     }
 
     public Sprite GetCardArtSprite(string cardName)
