@@ -4321,7 +4321,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5772910199276063847, guid: 8549ed827051c1a44ac3bc43f6a0fa30, type: 3}
       propertyPath: m_text
-      value: "Welcome Warrior! \nTo save forest of evil, you must defeat enemies
+      value: "Welcome Warrior! \nTo save the forest from evil, you must defeat enemies
         by playing cards from your deck.\r"
       objectReference: {fileID: 0}
     - target: {fileID: 7010680955865794115, guid: 8549ed827051c1a44ac3bc43f6a0fa30, type: 3}
@@ -11275,7 +11275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8592218676580384408, guid: 77c001c75543d37458ad48fe784409a9, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 50
+      value: 176
       objectReference: {fileID: 0}
     - target: {fileID: 8592218676580384408, guid: 77c001c75543d37458ad48fe784409a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14265,7 +14265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8592218676580384408, guid: 8549ed827051c1a44ac3bc43f6a0fa30, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -154
+      value: -27.999992
       objectReference: {fileID: 0}
     - target: {fileID: 8592218676580384408, guid: 8549ed827051c1a44ac3bc43f6a0fa30, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
