@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
                 }
                 currentAreaIndex = -1;
                 currentStageIndex = -1;
+                CharacterManager.instance.ResetSummons();
                 CardManager.instance.Reset();
                 EnemyManager.instance.Reset();
                 ChangeGameState(GameState.None);

@@ -67,19 +67,19 @@ public class ActionManager : MonoBehaviour
                 }
                 else
                 {
-                    target = UpdateTarget(action.TargetType, actor, target);
+                    Unit actionSpecificTarget = UpdateTarget(action.TargetType, actor, target);
                     if(isBuff)
                     {
-                        ProcessBuff(action, target);
+                        ProcessBuff(action, actionSpecificTarget);
                     }
                     else
                     {
-                        ProcessAction(action, actor, target);
+                        ProcessAction(action, actor, actionSpecificTarget);
                     }
                 }
             }
         }
-
+        
         // Reset targetting
         TargettingManager.instance.Reset();
 

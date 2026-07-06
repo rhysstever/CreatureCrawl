@@ -173,8 +173,8 @@ public class CardManager : MonoBehaviour
             new CardData("Frog", Slot.Ally, Rarity.Basic, new List<Action> { 
                 new Summon(1, "Frog", new List<Action> { new Action(ActionType.Heal, 1, TargetType.Player) }) 
             }),
-            new CardData("Rat", Slot.Ally, Rarity.Basic, new List<Action> { 
-                new Summon(1, "Rat", new List<Action> { new Action(ActionType.Poison, 2, TargetType.RandomFoe) }) 
+            new CardData("Rat", Slot.Ally, Rarity.Basic, new List<Action> {
+                new Summon(1, "Rat", new List<Action> { new Action(ActionType.Poison, 2, TargetType.RandomFoe) })
             }),
             new CardData("Newt", Slot.Ally, Rarity.Basic, new List<Action> { 
                 new Summon(1, "Newt", new List<Action> { new Action(ActionType.Burn, 2, TargetType.RandomFoe) }) 

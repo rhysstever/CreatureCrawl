@@ -199,9 +199,19 @@ public class Summon : Action
     public override string GetActionDescription(Unit unit)
     {
         // ===== Description Format =====
-        // Summon: "Summon a [NAME] with X health. ..."
+        // If there is no current ally:
+        // "Summon a [NAME] with X health. ..."
+        // If there is a current ally:
+        // "Buff your [NAME] with X health. ..."
         int buffedAmount = amount + GameManager.instance.Player.UnitEffects.GetEffectAmount(ActionType.Summon, true);
-        string description = string.Format("Summon a {0} for {1} health. \n\nOn its turn:", summonName, buffedAmount);
+
+        string descriptionStart = "Summon a";
+        if(CharacterManager.instance.Ally != null)
+        {
+            descriptionStart = "Buff your";
+        }
+
+        string description = string.Format("{0} {1} for {2} health. \n\nOn its turn:", descriptionStart, summonName, buffedAmount);
 
         foreach(Action action in summonActions)
         {
