@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 4829894fc8880024b9207d1fbe9bb085
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1017394652242602310
+    second: library_logo_english_0
+  - first:
+      213: -924170133012953908
+    second: library_logo_english_1
+  - first:
+      213: 5686117580815201579
+    second: library_logo_english_2
+  - first:
+      213: -4954160535787814548
+    second: library_logo_english_3
+  - first:
+      213: 9145332707716424250
+    second: library_logo_english_4
+  - first:
+      213: 6951997941825217331
+    second: library_logo_english_5
+  - first:
+      213: 4261036486002926011
+    second: library_logo_english_6
+  - first:
+      213: -4711468490638340183
+    second: library_logo_english_7
+  - first:
+      213: 7980204509615514771
+    second: library_logo_english_8
+  - first:
+      213: -909653482127366181
+    second: library_logo_english_9
+  - first:
+      213: -2721004797069324732
+    second: library_logo_english_10
+  - first:
+      213: -8188391044023984782
+    second: library_logo_english_11
+  - first:
+      213: -5147165781585970816
+    second: library_logo_english_12
+  - first:
+      213: 5207769553667356755
+    second: library_logo_english_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: library_logo_english_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 379
+        width: 142
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab692b444fc71e1f0800000000000000
+      internalID: -1017394652242602310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_1
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 379
+        width: 144
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc4ccb51920bc23f0800000000000000
+      internalID: -924170133012953908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_2
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 379
+        width: 118
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b25f79b30d529ee40800000000000000
+      internalID: 5686117580815201579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_3
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 379
+        width: 144
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c61cb10bd394f3bb0800000000000000
+      internalID: -4954160535787814548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_4
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 379
+        width: 145
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a32e234c4afbaee70800000000000000
+      internalID: 9145332707716424250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_5
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 379
+        width: 145
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3332db97b457a7060800000000000000
+      internalID: 6951997941825217331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_6
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 379
+        width: 144
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb1ee2bab1e322b30800000000000000
+      internalID: 4261036486002926011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_7
+      rect:
+        serializedVersion: 2
+        x: 1149
+        y: 379
+        width: 131
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9af4e05ce508d9eb0800000000000000
+      internalID: -4711468490638340183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 146
+        width: 207
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3946a9678b16fbe60800000000000000
+      internalID: 7980204509615514771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_9
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 159
+        width: 144
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd7e9114af24063f0800000000000000
+      internalID: -909653482127366181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_10
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 159
+        width: 144
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44e8c86bd8c0d3ad0800000000000000
+      internalID: -2721004797069324732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_11
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 159
+        width: 144
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27dd5fababdfc5e80800000000000000
+      internalID: -8188391044023984782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_12
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 159
+        width: 183
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 089b5841ef79198b0800000000000000
+      internalID: -5147165781585970816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: library_logo_english_13
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 159
+        width: 144
+        height: 183
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 358ff6e21d6b54840800000000000000
+      internalID: 5207769553667356755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      library_logo_english_0: -1017394652242602310
+      library_logo_english_1: -924170133012953908
+      library_logo_english_10: -2721004797069324732
+      library_logo_english_11: -8188391044023984782
+      library_logo_english_12: -5147165781585970816
+      library_logo_english_13: 5207769553667356755
+      library_logo_english_2: 5686117580815201579
+      library_logo_english_3: -4954160535787814548
+      library_logo_english_4: 9145332707716424250
+      library_logo_english_5: 6951997941825217331
+      library_logo_english_6: 4261036486002926011
+      library_logo_english_7: -4711468490638340183
+      library_logo_english_8: 7980204509615514771
+      library_logo_english_9: -909653482127366181
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
