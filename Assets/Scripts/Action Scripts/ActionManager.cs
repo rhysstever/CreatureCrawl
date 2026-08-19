@@ -68,7 +68,8 @@ public class ActionManager : MonoBehaviour
                 else
                 {
                     Unit actionSpecificTarget = UpdateTarget(action.TargetType, actor, target);
-                    if(isBuff)
+                    // Process the card as a buff if it is one AND it is not an ally card
+                    if(isBuff && action.GetActionDescription(null).Split(" ")[1] != "your")
                     {
                         ProcessBuff(action, actionSpecificTarget);
                     }
