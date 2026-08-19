@@ -1,6 +1,6 @@
-# Woodland Warriors
+# Creature Crawl
 
-Woodland Warriors is a roguelike deck-builder where you journey into the forest as a woodland creature. Improve your deck with gear you find along the way to defeat greater enemies deep within the woods.
+Creature Crawl is a roguelike deck-builder where you journey into the forest as a woodland creature. Improve your deck with gear you find along the way to defeat greater enemies deep within the woods.
 
 ## Attributions and Credits: 
 Forest background inspiration: https://www.reddit.com/r/PixelArt/comments/188lkmo/pixel_forest_study/
