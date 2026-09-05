@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
 
     // Set in inspector
     [SerializeField]    // MenuState UI Parents
-    private GameObject mainMenuUIParent, statsParent, creditsParent, characterSelectUIParent, gameUIParent, gameEndUIParent;
+    private GameObject mainMenuUIParent, statsParent, creditsParent, characterSelectUIParent, gameUIParent, pauseUIParent, gameEndUIParent;
     [SerializeField]    // Sub-menu UI Parents
     private GameObject statsTextParent, characterSelectInfoPanel, combatUIParent, nonCombatUIParent, cardSelectionUIParent, wellUIParent;
     [SerializeField]    // Game Sub-menu UI Parents
@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
         characterSelectToMainMenuButton,                                                // Character Select Buttons
         gameInfoButton, closeGameInfoButton, viewDeckButton, closeViewDeckButton,       // Game Top Buttons
         endTurnButton, selectCardButton, skipButton, drinkWellButton,                   // Game Buttons
+        pauseToGameButton, pauseToMainMenuButton,                                       // Pause Buttons
         gameEndToMainMenuButton;                                                        // GameEnd Buttons
     [SerializeField]
     private Toggle freePlayToggle;
@@ -111,6 +112,12 @@ public class UIManager : MonoBehaviour
             GameManager.instance.Player.HealFull();
             GameManager.instance.GoToNextStage();
         });
+        // Pause buttons
+        pauseToGameButton.onClick.AddListener(() => {
+            GameManager.instance.ChangeMenuState(MenuState.Game);
+            DeckManager.instance.UpdateHandInteractability(true);
+        });
+        pauseToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
         // Game end buttons
         gameEndToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
 
@@ -125,6 +132,7 @@ public class UIManager : MonoBehaviour
         creditsParent.SetActive(false);
         characterSelectUIParent.SetActive(false);
         gameUIParent.SetActive(false);
+        pauseUIParent.SetActive(false);
         gameEndUIParent.SetActive(false);
 
         switch(menuState)
@@ -153,6 +161,9 @@ public class UIManager : MonoBehaviour
                 gameUIParent.SetActive(true);
                 HideGameInfo();
                 HideDeckInfo();
+                break;
+            case MenuState.Pause:
+                pauseUIParent.SetActive(true);
                 break;
             case MenuState.GameEnd:
                 gameEndUIParent.SetActive(true);

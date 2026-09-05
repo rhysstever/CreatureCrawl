@@ -8,6 +8,7 @@ public enum MenuState
     Credits,
     CharacterSelect,
     Game,
+    Pause,
     GameEnd
 }
 
@@ -76,6 +77,18 @@ public class GameManager : MonoBehaviour
         ChangeMenuState(MenuState.MainMenu);
     }
 
+    public void Update()
+    {
+        if(CurrentMenuState == MenuState.Game && Input.GetKeyDown(KeyCode.Escape))
+        {
+            ChangeMenuState(MenuState.Pause);
+        }
+        else if(CurrentMenuState == MenuState.Pause && Input.GetKeyDown(KeyCode.Escape))
+        {
+            ChangeMenuState(MenuState.Game);
+        }
+    }
+
     public void ChangeMenuState(MenuState newMenuState)
     {
         currentMenuState = newMenuState;
@@ -103,6 +116,9 @@ public class GameManager : MonoBehaviour
                 CharacterManager.instance.ShowCharacterSelectIcons();
                 ChangeGameState(GameState.None);
                 ChangeCombatState(CombatState.None);
+                break;
+            case MenuState.Pause:
+                DeckManager.instance.UpdateHandInteractability(false);
                 break;
             case MenuState.GameEnd:
                 // Start playing overworld music

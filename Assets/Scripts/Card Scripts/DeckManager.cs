@@ -163,6 +163,14 @@ public class DeckManager : MonoBehaviour
         DisplayHand();
     }
 
+    public void UpdateHandInteractability(bool cardInteractability)
+    {
+        for(int i = 0; i < handSpline.transform.childCount; i++)
+        {
+            handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = cardInteractability;
+        }
+    }
+
     public void SetTutorialHandInteractability(int stage)
     {
         if(stage == 0)
