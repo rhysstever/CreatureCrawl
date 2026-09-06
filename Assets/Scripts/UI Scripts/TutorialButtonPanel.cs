@@ -29,14 +29,6 @@ public class TutorialButtonPanel : MonoBehaviour
                 if(nextPanel != null)
                 {
                     nextPanel.SetActive(true);
-                    if(nextPanel.name == "playing cards" || nextPanel.name == "playing targeting cards")
-                    {
-                        TutorialManager.instance.SetTutorialHandStage(1);
-                    }
-                    else if(nextPanel.name == "end turn")
-                    {
-                        TutorialManager.instance.SetTutorialHandStage(2);
-                    }
                 }
                 gameObject.SetActive(false);
 
@@ -45,6 +37,14 @@ public class TutorialButtonPanel : MonoBehaviour
                     TutorialManager.instance.EndTutorial();
                 }
             });
+        }
+    }
+
+    private void OnEnable()
+    {
+        if(TutorialManager.instance != null)
+        {
+            TutorialManager.instance.UpdateTutorialIndex(gameObject);
         }
     }
 }

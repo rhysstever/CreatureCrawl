@@ -11,9 +11,10 @@ public class TutorialManager : MonoBehaviour
     private GameObject introPanel, deckInfoPanel, backToCombatPanel, playedFirstCardPanel, playedFirstAttackPanel, startOfSecondTurnPanel;
 
     private bool isInTutorial, hasDeckInfoBeenViewed, hasBeenBackToCombat, hasAttacked;
-    private int currentStage;
+    private int tutorialStage;
 
     public bool IsInTutorial { get { return isInTutorial; } }
+    public int TutorialStage { get { return tutorialStage; } }
 
     private void Awake()
     {
@@ -29,12 +30,34 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
+        tutorialStage = -1;
         CheckIfTutorialShouldStart();
         hasDeckInfoBeenViewed = false;
         hasBeenBackToCombat = false;
         hasAttacked = false;
+    }
 
-        SetTutorialHandStage(isInTutorial ? 0 : 2);
+    public void UpdateTutorialIndex(GameObject currentTutorialPanelBeingShown)
+    {
+        if(currentTutorialPanelBeingShown == null)
+        {
+            tutorialStage = -1;
+            DeckManager.instance.UpdateHandInteractability(true);
+            return;
+        }
+
+        for(int i = 0; i < tutorialUIParentTrans.childCount; i++)
+        {
+            if(tutorialUIParentTrans.GetChild(i).gameObject.activeSelf)
+            {
+                tutorialStage = i;
+                DeckManager.instance.UpdateHandInteractability(true);
+                return;
+            }
+        }
+
+        tutorialStage = -1;
+        DeckManager.instance.UpdateHandInteractability(true);
     }
 
     public void CheckIfTutorialShouldStart()
@@ -103,40 +126,14 @@ public class TutorialManager : MonoBehaviour
         if(IsInTutorial)
         {
             startOfSecondTurnPanel.SetActive(true);
-            SetTutorialHandStage(2);
+            DeckManager.instance.UpdateHandInteractability(true);
         }
     }
 
     public void EndTutorial()
     {
         HideAllTutorialUI();
-        SetTutorialHandStage(2);
         isInTutorial = false;
-    }
-
-    public void SetTutorialHandStage(int stage)
-    {
-        if(isInTutorial)
-        {
-            currentStage = stage;
-            SetTutorialHandInteractabilityWithCurrentStage();
-        }
-        else
-        {
-            currentStage = 2;
-            SetTutorialHandInteractabilityWithCurrentStage();
-        }
-    }
-
-    public void SetTutorialHandInteractabilityWithCurrentStage()
-    {
-        if(IsInTutorial)
-        {
-            DeckManager.instance.SetTutorialHandInteractability(currentStage);
-        }
-        else
-        {
-            DeckManager.instance.SetTutorialHandInteractability(2);
-        }
+        DeckManager.instance.UpdateHandInteractability(true);
     }
 }

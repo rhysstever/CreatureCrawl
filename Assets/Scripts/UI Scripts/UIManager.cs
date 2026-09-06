@@ -273,7 +273,7 @@ public class UIManager : MonoBehaviour
         gameInfoUIParent.SetActive(true);
         gameInfoButton.gameObject.SetActive(false);
         UpdateButtonInteractability(false);
-        DeckManager.instance.SetTutorialHandInteractability(0);
+        DeckManager.instance.UpdateHandInteractability(false);
     }
 
     private void HideGameInfo()
@@ -282,7 +282,7 @@ public class UIManager : MonoBehaviour
         gameInfoUIParent.SetActive(false);
         gameInfoButton.gameObject.SetActive(true);
         UpdateButtonInteractability(true);
-        TutorialManager.instance.SetTutorialHandInteractabilityWithCurrentStage();
+        DeckManager.instance.UpdateHandInteractability(true);
     }
 
     private void ShowDeckInfo()
@@ -291,7 +291,7 @@ public class UIManager : MonoBehaviour
         viewDeckUIParent.SetActive(true);
         viewDeckButton.gameObject.SetActive(false);
         UpdateButtonInteractability(false);
-        DeckManager.instance.SetTutorialHandInteractability(0);
+        DeckManager.instance.UpdateHandInteractability(false);
 
         DeckManager.instance.DisplayDeckCards(viewDeckCardsUIParent.transform);
     }
@@ -302,7 +302,7 @@ public class UIManager : MonoBehaviour
         viewDeckUIParent.SetActive(false);
         viewDeckButton.gameObject.SetActive(true);
         UpdateButtonInteractability(true);
-        TutorialManager.instance.SetTutorialHandInteractabilityWithCurrentStage();
+        DeckManager.instance.UpdateHandInteractability(true);
 
         // Destroy displayed cards
         foreach(Transform child in viewDeckCardsUIParent.transform)

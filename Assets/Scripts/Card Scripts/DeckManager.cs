@@ -128,12 +128,10 @@ public class DeckManager : MonoBehaviour
         if(TutorialManager.instance.IsInTutorial && roundNum < 3)
         {
             DrawTutorialCards();
-            SetTutorialHandInteractability(0);
         } 
         else
         {
             DrawCards(numCardsDrawnAtPlayerTurnStart);
-            SetTutorialHandInteractability(2);
         }
 
         UIManager.instance.ShowEndTurnButton();
@@ -165,40 +163,50 @@ public class DeckManager : MonoBehaviour
 
     public void UpdateHandInteractability(bool cardInteractability)
     {
-        for(int i = 0; i < handSpline.transform.childCount; i++)
+        // First check if the player is in the tutorial AND that cards should be enabled
+        if(TutorialManager.instance.IsInTutorial && cardInteractability)
         {
-            handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = cardInteractability;
-        }
-    }
+            int currentTutorialStageIndex = TutorialManager.instance.TutorialStage;
+            Debug.Log(currentTutorialStageIndex);
 
-    public void SetTutorialHandInteractability(int stage)
-    {
-        if(stage == 0)
-        {
-            // Initially enable no cards
-            for(int i = 0; i < handSpline.transform.childCount; i++)
+            // At specific stage, only enable the first card
+            if(currentTutorialStageIndex == 8 || currentTutorialStageIndex == 13)
             {
-                handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                for(int i = 0; i < handSpline.transform.childCount; i++)
+                {
+                    handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = i == 0;
+                }
             }
-        }
-        else if(stage == 1)
-        {
-            // Partway through the tutorial, only enable the first card in hand
-            for(int i = 0; i < handSpline.transform.childCount; i++)
+            // For this tutorial stage, enable all cards and the end turn button
+            else if(currentTutorialStageIndex == 15)
             {
-                handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = i == 0;
+                for(int i = 0; i < handSpline.transform.childCount; i++)
+                {
+                    handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                }
+                UIManager.instance.UpdateEndTurnButtonInteractivability(true);
             }
+            // At all other stages, disable all cards
+            else
+            {
+                for(int i = 0; i < handSpline.transform.childCount; i++)
+                {
+                    handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                }
+                UIManager.instance.UpdateEndTurnButtonInteractivability(false);
+            }
+
+            return;
         }
         else
         {
-            // Otherwise, enable all cards
+            // If not in the tutorial or cards are being diabled, dis/enable all cards accordingly
             for(int i = 0; i < handSpline.transform.childCount; i++)
             {
-                handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = cardInteractability;
             }
+            UIManager.instance.UpdateEndTurnButtonInteractivability(cardInteractability);
         }
-
-        UIManager.instance.UpdateEndTurnButtonInteractivability(stage > 1);
     }
 
     public void DrawCards(int numberOfCardsToDraw)
@@ -356,6 +364,9 @@ public class DeckManager : MonoBehaviour
             // Rotate it straight up
             cardsToBeCentered[0].transform.eulerAngles = Vector3.zero;
         }
+
+        // Set proper interactability for the cards
+        UpdateHandInteractability(true);
     }
 
     private void RemoveAllCardsFromScene()
