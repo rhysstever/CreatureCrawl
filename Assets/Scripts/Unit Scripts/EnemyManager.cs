@@ -195,7 +195,6 @@ public class EnemyManager : MonoBehaviour
         // If there are no more waves to spawn, end the game
         if(currentWaveNum >= enemyWaves.Count)
         {
-            Debug.Log("You win! All waves defeated!");
             GameManager.instance.ChangeMenuState(MenuState.GameEnd);
             return;
         }

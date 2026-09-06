@@ -118,7 +118,6 @@ public class GameManager : MonoBehaviour
                 ChangeCombatState(CombatState.None);
                 break;
             case MenuState.Pause:
-                DeckManager.instance.UpdateHandInteractability(false);
                 break;
             case MenuState.GameEnd:
                 // Start playing overworld music

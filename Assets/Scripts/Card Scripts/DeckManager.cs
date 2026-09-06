@@ -133,8 +133,6 @@ public class DeckManager : MonoBehaviour
         {
             DrawCards(numCardsDrawnAtPlayerTurnStart);
         }
-
-        UIManager.instance.ShowEndTurnButton();
     }
 
     public void DrawTutorialCards()
@@ -167,35 +165,32 @@ public class DeckManager : MonoBehaviour
         if(TutorialManager.instance.IsInTutorial && cardInteractability)
         {
             int currentTutorialStageIndex = TutorialManager.instance.TutorialStage;
-            Debug.Log(currentTutorialStageIndex);
 
-            // At specific stage, only enable the first card
-            if(currentTutorialStageIndex == 8 || currentTutorialStageIndex == 13)
+            switch(currentTutorialStageIndex)
             {
-                for(int i = 0; i < handSpline.transform.childCount; i++)
-                {
-                    handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = i == 0;
-                }
+                // For 2 specific stages of the tutorial, enable only the first card in the hand
+                case 8:
+                case 13:
+                    for(int i = 0; i < handSpline.transform.childCount; i++)
+                    {
+                        handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = i == 0;
+                    }
+                    break;
+                // For 1 specific stage of the tutorial, enable the entire hand
+                case 15:
+                    for(int i = 0; i < handSpline.transform.childCount; i++)
+                    {
+                        handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = true;
+                    }
+                    break;
+                // Otherwise during the tutorial, disable the hand
+                default:
+                    for(int i = 0; i < handSpline.transform.childCount; i++)
+                    {
+                        handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                    }
+                    break;
             }
-            // For this tutorial stage, enable all cards and the end turn button
-            else if(currentTutorialStageIndex == 15)
-            {
-                for(int i = 0; i < handSpline.transform.childCount; i++)
-                {
-                    handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = true;
-                }
-                UIManager.instance.UpdateEndTurnButtonInteractivability(true);
-            }
-            // At all other stages, disable all cards
-            else
-            {
-                for(int i = 0; i < handSpline.transform.childCount; i++)
-                {
-                    handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                }
-                UIManager.instance.UpdateEndTurnButtonInteractivability(false);
-            }
-
             return;
         }
         else
@@ -205,7 +200,6 @@ public class DeckManager : MonoBehaviour
             {
                 handSpline.transform.GetChild(i).gameObject.GetComponent<BoxCollider2D>().enabled = cardInteractability;
             }
-            UIManager.instance.UpdateEndTurnButtonInteractivability(cardInteractability);
         }
     }
 
@@ -367,6 +361,7 @@ public class DeckManager : MonoBehaviour
 
         // Set proper interactability for the cards
         UpdateHandInteractability(true);
+        UIManager.instance.UpdateEndTurnButtonInteractivability(true);
     }
 
     private void RemoveAllCardsFromScene()

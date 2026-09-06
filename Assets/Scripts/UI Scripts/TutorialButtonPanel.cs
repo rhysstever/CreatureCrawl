@@ -18,6 +18,7 @@ public class TutorialButtonPanel : MonoBehaviour
                 if(previousPanel != null)
                 {
                     previousPanel.SetActive(true);
+                    TutorialManager.instance.UpdateTutorialIndex(-1);
                 }
                 gameObject.SetActive(false);
             });
@@ -29,6 +30,7 @@ public class TutorialButtonPanel : MonoBehaviour
                 if(nextPanel != null)
                 {
                     nextPanel.SetActive(true);
+                    TutorialManager.instance.UpdateTutorialIndex(1);
                 }
                 gameObject.SetActive(false);
 
@@ -37,14 +39,6 @@ public class TutorialButtonPanel : MonoBehaviour
                     TutorialManager.instance.EndTutorial();
                 }
             });
-        }
-    }
-
-    private void OnEnable()
-    {
-        if(TutorialManager.instance != null)
-        {
-            TutorialManager.instance.UpdateTutorialIndex(gameObject);
         }
     }
 }

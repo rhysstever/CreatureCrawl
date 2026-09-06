@@ -37,27 +37,18 @@ public class TutorialManager : MonoBehaviour
         hasAttacked = false;
     }
 
-    public void UpdateTutorialIndex(GameObject currentTutorialPanelBeingShown)
+    public void UpdateTutorialIndex(int indexChange)
     {
-        if(currentTutorialPanelBeingShown == null)
+        if(Mathf.Abs(indexChange) != 1)
         {
             tutorialStage = -1;
-            DeckManager.instance.UpdateHandInteractability(true);
-            return;
         }
-
-        for(int i = 0; i < tutorialUIParentTrans.childCount; i++)
+        else
         {
-            if(tutorialUIParentTrans.GetChild(i).gameObject.activeSelf)
-            {
-                tutorialStage = i;
-                DeckManager.instance.UpdateHandInteractability(true);
-                return;
-            }
+            tutorialStage += indexChange;
         }
-
-        tutorialStage = -1;
         DeckManager.instance.UpdateHandInteractability(true);
+        UIManager.instance.UpdateEndTurnButtonInteractivability(true);
     }
 
     public void CheckIfTutorialShouldStart()
@@ -79,6 +70,9 @@ public class TutorialManager : MonoBehaviour
         {
             isInTutorial = true;
             introPanel.SetActive(true);
+            tutorialStage = 0;
+            DeckManager.instance.UpdateHandInteractability(true);
+            UIManager.instance.UpdateEndTurnButtonInteractivability(false);
         }
     }
 
@@ -99,6 +93,7 @@ public class TutorialManager : MonoBehaviour
             HideAllTutorialUI();
             backToCombatPanel.SetActive(true);
             hasBeenBackToCombat = true;
+            tutorialStage = GetIndexOfTutorialPanel(backToCombatPanel);
         }
     }
 
@@ -108,6 +103,7 @@ public class TutorialManager : MonoBehaviour
         {
             HideAllTutorialUI();
             playedFirstCardPanel.SetActive(true);
+            tutorialStage = GetIndexOfTutorialPanel(playedFirstCardPanel);
         }
     }
 
@@ -118,6 +114,7 @@ public class TutorialManager : MonoBehaviour
             HideAllTutorialUI();
             playedFirstAttackPanel.SetActive(true);
             hasAttacked = true;
+            tutorialStage = GetIndexOfTutorialPanel(playedFirstAttackPanel);
         }
     }
 
@@ -126,7 +123,7 @@ public class TutorialManager : MonoBehaviour
         if(IsInTutorial)
         {
             startOfSecondTurnPanel.SetActive(true);
-            DeckManager.instance.UpdateHandInteractability(true);
+            tutorialStage = GetIndexOfTutorialPanel(startOfSecondTurnPanel);
         }
     }
 
@@ -134,6 +131,23 @@ public class TutorialManager : MonoBehaviour
     {
         HideAllTutorialUI();
         isInTutorial = false;
+        tutorialStage = -1;
         DeckManager.instance.UpdateHandInteractability(true);
+        UIManager.instance.UpdateEndTurnButtonInteractivability(true);
+    }
+
+    private int GetIndexOfTutorialPanel(GameObject tutorialPanelObject)
+    {
+        string panelName = tutorialPanelObject.name;
+        for(int i = 0; i < tutorialUIParentTrans.childCount; i++)
+        {
+            if(tutorialUIParentTrans.GetChild(i).gameObject.name == panelName)
+            {
+                return i;
+            }
+        }
+
+        Debug.LogWarning("Warning! No tutorial panel found with name: " + panelName);
+        return -1;
     }
 }

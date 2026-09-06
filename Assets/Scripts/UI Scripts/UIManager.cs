@@ -95,7 +95,7 @@ public class UIManager : MonoBehaviour
             TutorialManager.instance.TryShowBackToCombatPanel();
         });
         endTurnButton.onClick.AddListener(() => {
-            endTurnButton.gameObject.SetActive(false);
+            UpdateEndTurnButtonInteractivability(false);
             TutorialManager.instance.HideAllTutorialUI();
             GameManager.instance.ChangeCombatState(CombatState.AllyTurn);
         });
@@ -113,10 +113,7 @@ public class UIManager : MonoBehaviour
             GameManager.instance.GoToNextStage();
         });
         // Pause buttons
-        pauseToGameButton.onClick.AddListener(() => {
-            GameManager.instance.ChangeMenuState(MenuState.Game);
-            DeckManager.instance.UpdateHandInteractability(true);
-        });
+        pauseToGameButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.Game));
         pauseToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
         // Game end buttons
         gameEndToMainMenuButton.onClick.AddListener(() => GameManager.instance.ChangeMenuState(MenuState.MainMenu));
@@ -164,6 +161,7 @@ public class UIManager : MonoBehaviour
                 break;
             case MenuState.Pause:
                 pauseUIParent.SetActive(true);
+                DeckManager.instance.UpdateHandInteractability(false);
                 break;
             case MenuState.GameEnd:
                 gameEndUIParent.SetActive(true);
@@ -180,14 +178,14 @@ public class UIManager : MonoBehaviour
                 combatUIParent.SetActive(true);
                 nonCombatUIParent.SetActive(false);
 
-                endTurnButton.gameObject.SetActive(false);
+                UpdateEndTurnButtonInteractivability(false);
                 break;
             case GameState.CardSelection:
                 nonCombatUIParent.SetActive(true);
                 cardSelectionUIParent.SetActive(true);
                 wellUIParent.SetActive(false);
 
-                endTurnButton.gameObject.SetActive(false);
+                UpdateEndTurnButtonInteractivability(false);
                 break;
             case GameState.Well:
                 nonCombatUIParent.SetActive(true);
@@ -206,11 +204,6 @@ public class UIManager : MonoBehaviour
         TogglePlayerTurnBanner(false);
         ToggleEnemyTurnBanner(false);
         UpdateEndTurnButtonInteractivability(false);
-    }
-
-    public void ShowEndTurnButton()
-    {
-        endTurnButton.gameObject.SetActive(true);
     }
 
     public void TogglePlayerTurnBanner(bool isActive)
@@ -272,8 +265,8 @@ public class UIManager : MonoBehaviour
         isSubMenuShowing = true;
         gameInfoUIParent.SetActive(true);
         gameInfoButton.gameObject.SetActive(false);
-        UpdateButtonInteractability(false);
         DeckManager.instance.UpdateHandInteractability(false);
+        UpdateButtonInteractability(false);
     }
 
     private void HideGameInfo()
@@ -281,8 +274,8 @@ public class UIManager : MonoBehaviour
         isSubMenuShowing = false;
         gameInfoUIParent.SetActive(false);
         gameInfoButton.gameObject.SetActive(true);
-        UpdateButtonInteractability(true);
         DeckManager.instance.UpdateHandInteractability(true);
+        UpdateButtonInteractability(true);
     }
 
     private void ShowDeckInfo()
@@ -290,8 +283,8 @@ public class UIManager : MonoBehaviour
         isSubMenuShowing = true;
         viewDeckUIParent.SetActive(true);
         viewDeckButton.gameObject.SetActive(false);
-        UpdateButtonInteractability(false);
         DeckManager.instance.UpdateHandInteractability(false);
+        UpdateButtonInteractability(false);
 
         DeckManager.instance.DisplayDeckCards(viewDeckCardsUIParent.transform);
     }
@@ -301,8 +294,8 @@ public class UIManager : MonoBehaviour
         isSubMenuShowing = false;
         viewDeckUIParent.SetActive(false);
         viewDeckButton.gameObject.SetActive(true);
-        UpdateButtonInteractability(true);
         DeckManager.instance.UpdateHandInteractability(true);
+        UpdateButtonInteractability(true);
 
         // Destroy displayed cards
         foreach(Transform child in viewDeckCardsUIParent.transform)
@@ -318,7 +311,21 @@ public class UIManager : MonoBehaviour
     {
         if(endTurnButton.gameObject.activeSelf)
         {
-            endTurnButton.interactable = interactable;
+            if(interactable)
+            {
+                if(TutorialManager.instance.IsInTutorial)
+                {
+                    endTurnButton.interactable = TutorialManager.instance.TutorialStage == 15;
+                } 
+                else
+                {
+                    endTurnButton.interactable = true;
+                }
+            }
+            else
+            {
+                endTurnButton.interactable = false;
+            }
         }
     }
 
