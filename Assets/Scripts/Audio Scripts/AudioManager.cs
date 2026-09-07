@@ -34,6 +34,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField]
     private GameObject drinkAudioPrefab;
 
+    // Set in code
+    private float musicVolume, sfxVolume;
+
     public delegate void OnAudioDelegate();
     public static OnAudioDelegate onAttackAudioDelegate;
     public static OnAudioDelegate onDefendAudioDelegate;
@@ -56,6 +59,9 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        musicVolume = 0.5f;
+        sfxVolume = 0.5f;
+
         onAttackAudioDelegate += PlayAttackAudio;
         onDefendAudioDelegate += PlayGiveDefenseAudio;
 
@@ -76,6 +82,13 @@ public class AudioManager : MonoBehaviour
     }
 
     #region Music
+    public void UpdateMusicVolume(float volume)
+    {
+        musicVolume = volume;
+        overworldMusic.volume = musicVolume;
+        combatMusic.volume = musicVolume;
+    }
+
     public void PlayOverworldMusic()
     {
         overworldMusic.mute = false;
@@ -90,6 +103,11 @@ public class AudioManager : MonoBehaviour
     #endregion Music
 
     #region SFX
+    public void UpdateSfxVolume(float volume)
+    {
+        sfxVolume = volume;
+    }
+
     public void PlaySlotAttackAudio(ActionType actionType)
     {
         switch(actionType)
@@ -230,9 +248,14 @@ public class AudioManager : MonoBehaviour
         CreateAudioObject(spikesAudioPrefab);
     }
 
-    private void CreateAudioObject(GameObject audioPrefab)
+    private void CreateAudioObject(GameObject audioPrefab, bool isSFX = true)
     {
-        Instantiate(audioPrefab, transform);
+        AudioSource newAudioSource = Instantiate(audioPrefab, transform).GetComponent<AudioSource>();
+
+        if(isSFX)
+        {
+            newAudioSource.volume = sfxVolume;
+        }
     }
     #endregion SFX
 }
