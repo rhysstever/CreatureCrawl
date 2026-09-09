@@ -5,16 +5,17 @@ public class Player : Unit
     protected override void Start()
     {
         base.Start();
+        if(CharacterManager.instance.ChosenCharacter == Character.Beaver)
+        {
+            maxLife += 10;
+        }
         Reset();
         unitSpriteRenderer.sprite = CharacterManager.instance.GetCharacterSprite(CharacterManager.instance.ChosenCharacter);
     }
 
     public override void Reset()
     {
-        if(CharacterManager.instance.ChosenCharacter == Character.Beaver)
-        {
-            maxLife += 10;
-        }
+        
 
         base.Reset();
     }
