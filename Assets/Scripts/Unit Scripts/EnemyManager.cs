@@ -98,18 +98,17 @@ public class EnemyManager : MonoBehaviour
             EnemyType.Ent => new List<Action>
             {
                 new Action(ActionType.Poison, 6, TargetType.Player),
-                new Action(ActionType.Defend, 5, TargetType.Self),
-                new Action(ActionType.Defend, 5, TargetType.Self),
-                new Action(ActionType.WeaponAttack, 15, TargetType.Player),
+                new Action(ActionType.Defend, 10, TargetType.Self),
+                new Action(ActionType.WeaponAttack, 5, TargetType.Player),
                 new Buff(ActionType.WeaponAttack, 10),
             },
             EnemyType.Hag => new List<Action>
             {
                 new EnemySummon(2, EnemyType.Mushroom),
                 new Action(ActionType.Defend, 5, TargetType.Self),
-                new Action(ActionType.Burn, 5, TargetType.Player),
-                new Action(ActionType.Poison, 10, TargetType.Player),
-                new Action(ActionType.Heal, 10, TargetType.Self),
+                new Action(ActionType.Burn, 6, TargetType.Player),
+                new Action(ActionType.Poison, 6, TargetType.Player),
+                new Action(ActionType.Heal, 8, TargetType.Self),
             },
             _ => new List<Action>()
         };
