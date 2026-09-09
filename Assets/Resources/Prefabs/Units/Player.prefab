@@ -525,7 +525,7 @@ MonoBehaviour:
   attackMovePos: {fileID: 9131654403480938328}
   effectTrans1: {fileID: 3900064309980977564}
   effectTrans2: {fileID: 4063457963306556167}
-  maxLife: 10
+  maxLife: 15
   healingParticleSystem: {fileID: -4923721005317679765}
   burnParticleSystem: {fileID: 7054178147012902818}
   poisonParticleSystem: {fileID: 8809244321418319334}

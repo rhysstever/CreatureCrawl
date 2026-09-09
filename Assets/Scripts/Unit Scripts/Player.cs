@@ -11,8 +11,6 @@ public class Player : Unit
 
     public override void Reset()
     {
-        maxLife = 10;
-
         if(CharacterManager.instance.ChosenCharacter == Character.Beaver)
         {
             maxLife += 10;
