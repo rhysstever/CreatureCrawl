@@ -181,6 +181,7 @@ public class UIManager : MonoBehaviour
                 UpdateEndTurnButtonInteractivability(false);
                 break;
             case GameState.CardSelection:
+                combatUIParent.SetActive(false);
                 nonCombatUIParent.SetActive(true);
                 cardSelectionUIParent.SetActive(true);
                 wellUIParent.SetActive(false);
@@ -188,6 +189,7 @@ public class UIManager : MonoBehaviour
                 UpdateEndTurnButtonInteractivability(false);
                 break;
             case GameState.Well:
+                combatUIParent.SetActive(false);
                 nonCombatUIParent.SetActive(true);
                 cardSelectionUIParent.SetActive(false);
                 wellUIParent.SetActive(true);

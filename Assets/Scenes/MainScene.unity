@@ -1490,6 +1490,7 @@ GameObject:
   - component: {fileID: 231419619}
   - component: {fileID: 231419625}
   - component: {fileID: 231419623}
+  - component: {fileID: 231419627}
   - component: {fileID: 231419620}
   m_Layer: 0
   m_Name: GameManager
@@ -1775,6 +1776,20 @@ MonoBehaviour:
   playedFirstCardPanel: {fileID: 1659951313}
   playedFirstAttackPanel: {fileID: 1537581089}
   startOfSecondTurnPanel: {fileID: 247260039}
+--- !u!114 &231419627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231419612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27580e50a07cf1b498e96e1aec94bfb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 1107327319}
+  smallPanelPrefabTrans: {fileID: 1559897619679945112, guid: b1af06fb66fec4f4eb5f7dc6e218b712, type: 3}
 --- !u!1001 &242233830
 PrefabInstance:
   m_ObjectHideFlags: 0
