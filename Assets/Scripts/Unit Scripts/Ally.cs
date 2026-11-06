@@ -8,6 +8,7 @@ public class Ally : Unit
 
     protected override void Awake()
     {
+        unitEffects = GameManager.instance.Player.UnitEffects;
         base.Awake();
     }
 

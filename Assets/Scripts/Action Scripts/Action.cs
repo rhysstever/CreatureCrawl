@@ -148,7 +148,6 @@ public class Action
             case TargetType.RandomFoe:
                 description += ", randomly";
                 break;
-
         }
 
         if(times > 1)
@@ -203,15 +202,13 @@ public class Summon : Action
         // "Summon a [NAME] with X health. ..."
         // If there is a current ally:
         // "Buff your [NAME] with X health. ..."
-        int buffedAmount = amount + GameManager.instance.Player.UnitEffects.GetEffectAmount(ActionType.Summon, true);
-
         string descriptionStart = "Summon a";
         if(CharacterManager.instance.Ally != null)
         {
             descriptionStart = "Buff your";
         }
 
-        string description = string.Format("{0} {1} for {2} health. \n\nOn its turn:", descriptionStart, summonName, buffedAmount);
+        string description = string.Format("{0} {1} for {2} health. \n\nOn its turn:", descriptionStart, summonName, amount);
 
         foreach(Action action in summonActions)
         {

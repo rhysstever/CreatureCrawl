@@ -15,14 +15,13 @@ public class Player : Unit
 
     public override void Reset()
     {
-        
-
         base.Reset();
     }
 
     public override void PostCombatReset()
     {
         base.PostCombatReset();
+        unitEffects.ResetAllEffects();
         CharacterManager.instance.ResetSummons();
     }
 
@@ -39,7 +38,7 @@ public class Player : Unit
 
     public override void TakeDamage(int amount, Unit attacker, DamageType damageType)
     {
-        if(damageType == DamageType.Attack && CharacterManager.instance.Ally != null)
+        if(CharacterManager.instance.Ally != null)
         {
             int runningAmount = amount;
             // Damage the player's defense first

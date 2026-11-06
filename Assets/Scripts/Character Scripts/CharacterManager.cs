@@ -254,12 +254,10 @@ public class CharacterManager : MonoBehaviour
 
     public void SummonAlly(Summon summonAction)
     {
-        int amount = summonAction.Amount + GameManager.instance.Player.UnitEffects.GetEffectAmount(ActionType.Summon, true);
-
         AudioManager.instance.PlayAllyAudio(summonAction.SummonName);
         if(ally != null)
         {
-            ally.GetComponent<Ally>().Buff(amount);
+            ally.GetComponent<Ally>().Buff(summonAction.Amount);
         }
         else
         {
@@ -269,8 +267,7 @@ public class CharacterManager : MonoBehaviour
                 Quaternion.identity,
                 allySpawnTrans
             ).GetComponent<Ally>();
-
-            newAlly.SetHealth(amount);
+            newAlly.SetHealth(summonAction.Amount);
             newAlly.SetActions(summonAction.SummonActions);
             ally = newAlly;
         }

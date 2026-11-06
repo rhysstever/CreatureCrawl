@@ -54,7 +54,19 @@ public class CardData
         string description = "";
         for(int i = 0; i < actions.Count; i++)
         {
-            description += actions[i].GetActionDescription(unit);
+            Action action = actions[i];
+            if(action is Buff)
+            {
+                description += (action as Buff).GetActionDescription(unit);
+            }
+            else if(action is Summon)
+            {
+                description += (action as Summon).GetActionDescription(unit);
+            }
+            else
+            {
+                description += action.GetActionDescription(unit);
+            }
 
             if(i < actions.Count - 1)
             {

@@ -42,8 +42,9 @@ public class Unit : MonoBehaviour
 
     protected virtual void Awake()
     {
-        unitEffects = new UnitEffects();
-        Reset();
+        if(unitEffects == null) { unitEffects = new UnitEffects(); }
+        currentLife = maxLife;
+        UpdateLifeUIText();
     }
 
     protected virtual void Start()
@@ -66,7 +67,6 @@ public class Unit : MonoBehaviour
     {
         currentDefense = 0;
         UpdateDefenseUIText();
-        unitEffects.ResetAllEffects();
         RemoveEffectsUI();
     }
 

@@ -20,7 +20,6 @@ public class UnitEffects
             new Effect(new Action(ActionType.Burn, 0, TargetType.Self), true),
             new Effect(new Action(ActionType.Poison, 0, TargetType.Self), true),
             new Effect(new Action(ActionType.Spike, 0, TargetType.Self), false),
-            new Effect(new Buff(ActionType.Summon, 0), false)
         };
     }
 

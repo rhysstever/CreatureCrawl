@@ -186,6 +186,7 @@ public class ActionManager : MonoBehaviour
                     {
                         Summon summon = action as Summon;
                         CharacterManager.instance.SummonAlly(summon);
+                        DeckManager.instance.UpdateCurrentHandDescriptions();
                     }
                 }
                 break;
