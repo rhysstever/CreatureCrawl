@@ -49,6 +49,9 @@ public class DeckManager : MonoBehaviour
         numCardsDrawnAtPlayerTurnStart = 4;
     }
     
+    /// <summary>
+    /// Set the game up for a new combat
+    /// </summary>
     public void SetupForNewCombat()
     {
         deck = GenerateDeck();
@@ -97,9 +100,13 @@ public class DeckManager : MonoBehaviour
         GameManager.instance.ChangeCombatState(CombatState.PlayerTurn);
     }
 
-    public List<CardData> GenerateDeck()
+    /// <summary>
+    /// Gets a list of current cards
+    /// </summary>
+    /// <returns>A List of CardData for all current slot cards</returns>
+    private List<CardData> GenerateDeck()
     {
-        List<CardData> cards = new();
+        List<CardData> cards = new List<CardData>();
 
         foreach(Slot slot in Enum.GetValues(typeof(Slot)).Cast<Slot>().ToList())
         {
@@ -118,11 +125,20 @@ public class DeckManager : MonoBehaviour
         return cards;
     }
 
+    /// <summary>
+    /// Removes all cards from the scene
+    /// </summary>
     public void ClearHand()
     {
-        RemoveAllCardsFromScene();
+        for(int i = handSpline.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(handSpline.transform.GetChild(i).gameObject);
+        }
     }
 
+    /// <summary>
+    /// Deals a set amount of cards to the player
+    /// </summary>
     public void DealHand()
     {
         if(TutorialManager.instance.IsInTutorial && roundNum < 3)
@@ -135,6 +151,9 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draws specific cards based on how far along the user is in the tutorial
+    /// </summary>
     public void DrawTutorialCards()
     {
         if(roundNum == 1)
@@ -159,6 +178,10 @@ public class DeckManager : MonoBehaviour
         DisplayHand();
     }
 
+    /// <summary>
+    /// Updates the interactability for the entire present hand in the scene
+    /// </summary>
+    /// <param name="cardInteractability">Whether the hand should be enabled or disabled</param>
     public void UpdateHandInteractability(bool cardInteractability)
     {
         // First check if the player is in the tutorial AND that cards should be enabled
@@ -203,6 +226,10 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Draw the given number of cards into the scene
+    /// </summary>
+    /// <param name="numberOfCardsToDraw">The number of cards to be drawn</param>
     public void DrawCards(int numberOfCardsToDraw)
     {
         // Add the given number of cards from the deck into the hand
@@ -218,6 +245,10 @@ public class DeckManager : MonoBehaviour
         DisplayHand();
     }
 
+    /// <summary>
+    /// Gets a random card from the deck
+    /// </summary>
+    /// <returns>CardData for the random card</returns>
     private CardData GetRandomCardFromDeck()
     {
         if(CharacterManager.instance.ChosenCharacter == Character.Otter)
@@ -247,11 +278,26 @@ public class DeckManager : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Creates a card in the scene
+    /// </summary>
+    /// <param name="cardPrefab">The GameObject prefab of the type of card</param>
+    /// <param name="cardData">The CardData info of the card</param>
+    /// <param name="parent">The parent Transform that will hold the card</param>
+    /// <returns>The GameObject of the card in the scene</returns>
     private GameObject SpawnCard(GameObject cardPrefab, CardData cardData, Transform parent)
     {
         return SpawnCard(cardPrefab, cardData, Vector2.zero, parent);
     }
 
+    /// <summary>
+    /// Creates a card in the scene
+    /// </summary>
+    /// <param name="cardPrefab">The GameObject prefab of the type of card</param>
+    /// <param name="cardData">The CardData info of the card</param>
+    /// <param name="position">The Vector2 position of the card in the scene</param>
+    /// <param name="parent">The parent Transform that will hold the card</param>
+    /// <returns>The GameObject of the card in the scene</returns>
     private GameObject SpawnCard(GameObject cardPrefab, CardData cardData, Vector2 position, Transform parent)
     {
         GameObject newCard = Instantiate(cardPrefab, position, Quaternion.identity, parent);
@@ -261,11 +307,19 @@ public class DeckManager : MonoBehaviour
         return newCard;
     }
 
+    /// <summary>
+    /// Increments the combat round by 1
+    /// </summary>
     public void IncrementRound()
     {
         roundNum++;
     }
 
+    /// <summary>
+    /// Gets info for the current card at the given slot
+    /// </summary>
+    /// <param name="slot">The Slot category of the card</param>
+    /// <returns>The CardData info of the card</returns>
     public CardData GetCardDataBySlot(Slot slot)
     {
         foreach(CardData cardData in deck)
@@ -279,6 +333,10 @@ public class DeckManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Removes a card from the scene and reorganizes the hand
+    /// </summary>
+    /// <param name="cardObject">The GameObject of the card to be removed</param>
     public void RemoveCard(GameObject cardObject)
     {
         // Hide and Destroy the card game object
@@ -289,6 +347,9 @@ public class DeckManager : MonoBehaviour
         DisplayHand();
     }
 
+    /// <summary>
+    /// Organizes the hand of cards in the scene
+    /// </summary>
     private void DisplayHand()
     {
         // Get a list of active cards (the list of undestroyed cards cannot be used, as destroying cards takes some time)
@@ -364,14 +425,9 @@ public class DeckManager : MonoBehaviour
         UIManager.instance.UpdateEndTurnButtonInteractivability(true);
     }
 
-    private void RemoveAllCardsFromScene()
-    {
-        for(int i = handSpline.transform.childCount - 1; i >= 0; i--)
-        {
-            Destroy(handSpline.transform.GetChild(i).gameObject);
-        }
-    }
-
+    /// <summary>
+    /// Updates all in hand cards' descriptions
+    /// </summary>
     public void UpdateCurrentHandDescriptions()
     {
         for(int i = 0; i < handSpline.transform.childCount; i++)
@@ -380,6 +436,9 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shows card selection cards
+    /// </summary>
     public void SetupCardSelection()
     {
         // Hide the field collider
@@ -410,6 +469,10 @@ public class DeckManager : MonoBehaviour
         SetCurrentCardSelection(null);
     }
 
+    /// <summary>
+    /// Change the current selection during card selection
+    /// </summary>
+    /// <param name="cardSelected">The info for newly selected card</param>
     public void SetCurrentCardSelection(CardData cardSelected)
     {
         currentCardSelection = cardSelected;
@@ -417,6 +480,9 @@ public class DeckManager : MonoBehaviour
         UIManager.instance.SetCardSelectionButton(cardSelected != null);
     }
 
+    /// <summary>
+    /// Adds the currently selected card to the deck
+    /// </summary>
     public void AddSelectedCardToDeck()
     {
         if(cardSelectionCardParentTrans != null)
@@ -431,6 +497,9 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Clears the cards used in card selection
+    /// </summary>
     public void ClearCardSelectionDisplayCards()
     {
         for(int i = cardSelectionCardParentTrans.childCount - 1; i >= 0; i--)
@@ -439,6 +508,10 @@ public class DeckManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Displays a deck view with all current cards
+    /// </summary>
+    /// <param name="viewDeckCardParent">The Transform parent that will hold all of the deck card objects</param>
     public void DisplayDeckCards(Transform viewDeckCardParent)
     {
         for(int i = 0; i < viewDeckCardParent.childCount; i++)

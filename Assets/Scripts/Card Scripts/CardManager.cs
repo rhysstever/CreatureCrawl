@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
@@ -30,6 +28,7 @@ public class CardManager : MonoBehaviour
 
     private void Awake()
     {
+        // Singleton
         if(instance == null)
         {
             instance = this;
@@ -54,6 +53,10 @@ public class CardManager : MonoBehaviour
         rarityPercentages.Add(Rarity.Rare, 0.05f);
     }
 
+    /// <summary>
+    /// Loads and organizes all card base sprites
+    /// </summary>
+    /// <returns>A Dictionary sorted by slot and rarity of all possible card base Sprites</returns>
     private Dictionary<(Slot, Rarity), Sprite> LoadCardBaseSprites()
     {
         Dictionary<(Slot, Rarity), Sprite> newCardBaseSprites = new Dictionary<(Slot, Rarity), Sprite>();
@@ -96,6 +99,10 @@ public class CardManager : MonoBehaviour
         return newCardBaseSprites;
     }
 
+    /// <summary>
+    /// Loads all card art sprites
+    /// </summary>
+    /// <returns>A List of all Sprites for each card's art</returns>
     private List<Sprite> LoadCardArtSprites()
     {
         List<Sprite> spriteList = new List<Sprite>();
@@ -254,11 +261,20 @@ public class CardManager : MonoBehaviour
     }
     #endregion Card Creation
 
+    /// <summary>
+    /// Plays a given card
+    /// </summary>
+    /// <param name="cardObject">The GameObject of the card being played</param>
     public void Play(GameObject cardObject)
     {
         Play(cardObject, null);
     }
 
+    /// <summary>
+    /// Players a given card on a given enemy
+    /// </summary>
+    /// <param name="cardObject">The GameObject of the card being played</param>
+    /// <param name="targetEnemy">The Enemy being targetted for the card's effects</param>
     public void Play(GameObject cardObject, Enemy targetEnemy)
     {
         CardData cardData = cardObject.GetComponent<CardObject>().CardData;
@@ -279,6 +295,11 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets a card's art
+    /// </summary>
+    /// <param name="cardName">The name of the card</param>
+    /// <returns>The Sprite for the card's art</returns>
     public Sprite GetCardArtSprite(string cardName)
     {
         string formattedName = cardName.Replace(" ", "");
@@ -295,6 +316,10 @@ public class CardManager : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Gets a random card rarity
+    /// </summary>
+    /// <returns>A random Rarity value</returns>
     private Rarity GetRandomRarity()
     {
         float currentRarityPercSum = 0f;
@@ -322,6 +347,11 @@ public class CardManager : MonoBehaviour
         return Rarity.Basic;
     }
 
+    /// <summary>
+    /// Gets a given number of cards from the deck
+    /// </summary>
+    /// <param name="numOfCardData">The number of random cards retrieved</param>
+    /// <returns>Returns a List of CardData for each card gotten</returns>
     public List<CardData> GetRandomCardDatas(int numOfCardData)
     {
         List<CardData> cardDatas = new List<CardData>();
@@ -339,12 +369,21 @@ public class CardManager : MonoBehaviour
         return cardDatas;
     }
 
+    /// <summary>
+    /// Gets a random card from the deck
+    /// </summary>
+    /// <returns>Returns CardData for the card gotten</returns>
     public CardData GetRandomCardData()
     {
         Slot randomSlot = (Slot)UnityEngine.Random.Range(0, Enum.GetValues(typeof(Slot)).Length);
         return GetRandomCardData(randomSlot);
     }
 
+    /// <summary>
+    /// Gets a random card from the deck of a given type
+    /// </summary>
+    /// <param name="slotType">The slot type of the card</param>
+    /// <returns>Returns CardData for the card gotten</returns>
     public CardData GetRandomCardData(Slot slotType)
     {
         Rarity randomRarity = GetRandomRarity();
@@ -352,7 +391,7 @@ public class CardManager : MonoBehaviour
         List<CardData> filterList = cardLibrary
             .FindAll(card => card.Slot == slotType)
             .FindAll(card => card.Rarity == randomRarity);
-        int randomIndex = UnityEngine.Random.Range(0, filterList.Count);
+        int randomIndex = UnityEngine.Random.Range(1, filterList.Count);    // Start at index 1 to avoid pulling a starter card
         return filterList[randomIndex];
     }
 
@@ -385,11 +424,22 @@ public class CardManager : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Gets the correct sprite for the card base
+    /// </summary>
+    /// <param name="slotType">The slot of the card (trim)</param>
+    /// <param name="rarity">The rarity of the card (border)</param>
+    /// <returns>The proper card base Sprite</returns>
     public Sprite GetCardBaseSprite(Slot slotType, Rarity rarity)
     {
         return cardBaseSprites[(slotType, rarity)];
     }
 
+    /// <summary>
+    /// Gets the icon for the type of action
+    /// </summary>
+    /// <param name="actionType">The action type the sprite equates to</param>
+    /// <returns>A Sprite object that corresponds to the given action</returns>
     public Sprite GetActionSprite(ActionType actionType)
     {
         return actionType switch
@@ -406,6 +456,10 @@ public class CardManager : MonoBehaviour
         };
     }
 
+    /// <summary>
+    /// Swaps the card at the proper slot
+    /// </summary>
+    /// <param name="newCardData">The card being added to the deck</param>
     public void UpdateSlot(CardData newCardData)
     {
         switch(newCardData.Slot)
